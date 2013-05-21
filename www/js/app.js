@@ -1,9 +1,9 @@
 $(document).ready(function(){
-    mapbox.load(['npr.map-94vv5tn9','npr.us-wildfires'], function(data){
+    mapbox.load(['npr.ok-moore-tornado'], function(data){
         window.m = mapbox.map('map');
         m.addLayer(data[0].layer);
-        m.addLayer(data[1].layer);
-        m.setZoomRange(11, 15);
+        // m.addLayer(data[1].layer);
+        m.setZoomRange(12, 16);
         m.interaction.auto();
     
         var width = $(window).width();

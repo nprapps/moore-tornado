@@ -19,13 +19,49 @@ a:hover, a:active { color: #36c; }
 
 html, body, #map { height: 100%; }
 
-#map {cursor:default !important; /* wax interactivity changes the cursor, lets change it back */ }
+#map { cursor:default !important; /* wax interactivity changes the cursor, lets change it back */ }
         
-p.desc {background:url('../img/npr_75x25.png') no-repeat center left; padding-left:85px; margin: 13px; line-height: 15px; font-size: 13px; color: #999;}        
+p.desc {
+    background: url('../img/npr_75x25.png') no-repeat center left;
+    padding-left: 85px;
+    margin: 13px;
+    line-height: 15px;
+    font-size: 13px;
+    color: #999;
+}        
         
-#topper { position:fixed; top:44px; width:100%; z-index:2; background-color:#efefef; border-bottom:1px solid #999999; height:60px; color:#333; }
-#topper h1 { font-size:18px; font-family: Georgia, serif; margin-top: 16px;}
-#topper #about { text-transform:uppercase; position:absolute; right: 30px; top:8px; width:80px; height:40px; border:1px solid #999999; font-size:11px; line-height:13px; font-weight:bold; color:#777; }
+#topper {
+    position:fixed;
+    top:46px;
+    width:100%;
+    z-index:2;
+    background-color:#ebebeb;
+    height:60px;
+    color:#333;
+}
+
+#topper h1 {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    margin-top: 16px;
+    color:#555;
+}
+
+#topper #about {
+    text-transform: uppercase;
+    position: absolute;
+    right: 30px;
+    top: 8px;
+    width: 80px;
+    height: 40px;
+    border: 1px solid #999999;
+    font-size: 11px;
+    line-height: 13px;
+    font-weight: bold;
+    color: #777;
+}
 
 #legend {
     display:none;
@@ -165,8 +201,16 @@ p.desc {background:url('../img/npr_75x25.png') no-repeat center left; padding-le
 
 @media (min-width:767px) {
     #topper { padding-left: 30px; } 
-    #topper h1 { font-size:28px; line-height:56px; float:left; margin-top: 0px; }
-    #topper #about { width:150px; font-size:14px; }
+    #topper h1 {
+        font-size: 28px;
+        line-height: 56px;
+        float: left;
+        margin-top: 0px;
+    }
+    #topper #about {
+        width: 150px;
+        font-size: 14px;
+    }
 }
 
 @media (min-width:960px) {
