@@ -410,6 +410,7 @@ def psql(command):
 def geoprocess():
     # Setup
     with settings(warn_only=True):
+        local('dropdb %(project_slug)s' % env)
         local('createdb %(project_slug)s' % env)
         psql('CREATE EXTENSION postgis')
 
@@ -417,7 +418,7 @@ def geoprocess():
     local('ogr2ogr -f "PostgreSQL" PG:"dbname=%(project_slug)s" data/buildings/Buildings.shp -nln buildings -t_srs EPSG:4326' % env)
     local('ogr2ogr -f "PostgreSQL" PG:"dbname=%(project_slug)s" data/county_parcels/ParcelPoly_4.shp -nln parcels -t_srs EPSG:4326 -nlt MultiPolygon' % env)
     local('ogr2ogr -f "PostgreSQL" PG:"dbname=%(project_slug)s" data/path_polygon/path_polygon.shp -nln path_polygon -t_srs EPSG:4326' % env)
-    local('ogr2ogr -f "PostgreSQL" PG:"dbname=%(project_slug)s" data/storm_survey_damage/storm_survey_damage.shp -nln story_survey_damage -t_srs EPSG:4326' % env)
+    local('ogr2ogr -f "PostgreSQL" PG:"dbname=%(project_slug)s" data/storm_survey_damage/storm_survey_damage.shp -nln storm_survey_damage -t_srs EPSG:4326' % env)
     
     # Generate parcel intersections
     psql('alter table parcels add column is_in_path bool')
