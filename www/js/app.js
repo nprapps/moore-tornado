@@ -64,16 +64,6 @@ $(document).ready(function(){
             return newPopup[0];
         });
         m.addLayer(markerLayer);    
-        $('#find,#find2').click(function(){
-            navigator.geolocation.getCurrentPosition(
-                function(position) {
-                    zoomToPin(position.coords.latitude,position.coords.longitude);
-                },
-                function(err) {
-                    alert('Your location could not be found. Try enabling location services.');
-                }
-            );
-        });
     
         function on_all_loaded(layer, callback) {
             if (layer.requestManager.openRequestCount == 0) {
@@ -127,15 +117,6 @@ $(document).ready(function(){
             });
         }
             
-        $('#search').submit(function(e){
-            e.preventDefault();
-            geocode(encodeURIComponent($('#search input').val()));
-        });
-        $('#search2').submit(function(e){
-            e.preventDefault();
-            geocode(encodeURIComponent($('#search2 input').val()));
-        });
-            
         function geocode(query){
             $.ajax({
                url: 'http://open.mapquestapi.com/nominatim/v1/search?format=json&countrycodes=us&limit=1&addressdetails=1&q=' + query,
@@ -160,10 +141,5 @@ $(document).ready(function(){
                 $(".legend-contents").clone().appendTo(".modal-body");
             }
         });
-    
-        //for old browsers and for IE in a frame
-        if (!navigator.geolocation) {
-            $("#find,find2").hide();
-        }
     });
 });
