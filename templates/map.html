@@ -8,12 +8,12 @@
 {% block map_content %}
     <div id="topper">
         <h1>{{ PROJECT_NAME }}</h1>
-        <button id="about" class="btn" data-toggle="modal" data-target="#myModal">About the map</button>
+        <button id="about" data-toggle="modal" data-target="#myModal">About<br/>the map</button>
     </div>
     <div id="map"></div>
     <div id="legend">
         <div class="legend-contents">
-    		<p class="headline">The Tornado's Path</a>
+    		<p class="headline">{{ PROJECT_NAME }}</a>
     			<p class="chatter">This map shows the path of the May 20th tornado that hit Moore, Oklahoma.</p>
     		<p class="read-more">Read more: <a href="TKTK">TKTK: Story Link Here</a></p>
     		<p class="byline">
@@ -28,7 +28,7 @@
 	<div class="modal hide" id="myModal">
 	  <div class="modal-header">
 	    <button type="button" class="close" data-dismiss="modal">X</button>
-	    <h3>About The Map</h3>
+	    <h3></h3>
 	  </div>
       <div class="modal-body">
       </div>
