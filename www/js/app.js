@@ -28,6 +28,8 @@ $(document).ready(function(){
                 $(".modal h3").text($(".legend-contents .headline").text());
                 $(".legend-contents .headline").hide();
                 $(".legend-contents").clone().appendTo(".modal-body");
+            } else {
+                $(".legend-contents .headline").show();
             }
         });
     });
