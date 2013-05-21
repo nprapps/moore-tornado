@@ -18,11 +18,11 @@ $(document).ready(function(){
 
         $("#about").click(function(){
             if($(".modal-body").children().length < 1 ) {
-                $(".modal h3").text($(".legend-contents .headline").text());
-                $(".legend-contents .headline").hide();
+                // $(".modal h3").text($(".legend-contents .headline").text());
+                // $(".legend-contents .headline").hide();
                 $(".legend-contents").clone().appendTo(".modal-body");
             } else {
-                $(".legend-contents .headline").show();
+                // $(".legend-contents .headline").show();
             }
         });
     });

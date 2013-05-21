@@ -1,7 +1,7 @@
 // Global variables
 @img-root: "../img";
 
-h1, h2, h3, h4, h5, h6 { font-family: Georgia, serif; margin: 0 0 12px 0; line-height: 1.35em; }
+h1, h2, h3, h4, h5, h6 { font-family: Helvetica, Arial, sans-serif; margin: 0 0 12px 0; line-height: 1.35em; }
 a, a:link, a:visited { color: #000; }
 a:hover, a:active { color: #36c; }
 
@@ -47,10 +47,10 @@ nav {
 
 #topper h1 {
     font-size: 14px;
-    text-transform: uppercase;
     font-family: Helvetica, Arial, sans-serif;
-    line-height:44px;
-    color:#111;
+    font-weight: bold;
+    line-height: 44px;
+    color: #111;
 }
 
 #topper #about {
@@ -129,12 +129,29 @@ nav {
 
 .modal-body {
     max-height:none;
+    
+    .legend-contents .headline {
+        display:none;
+    }
 }
+
+.modal-header {
+    border-bottom:2px solid #ebebeb;
+}
+
+.modal-header h3 {
+    color: #111;
+    font-size: 14px;
+    font-weight: bold;
+}
+
 .modal-header .close {
     padding: 20px;
     position: absolute;
     right: -5px;
-    top: -10px;
+    top: -8px;
+    color: #111;
+    opacity:1;
 }
 
 .zoomer {
