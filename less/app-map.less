@@ -24,18 +24,8 @@ html, body, #map { height: 100%; }
 p.desc {background:url('../img/npr_75x25.png') no-repeat center left; padding-left:85px; margin: 13px; line-height: 15px; font-size: 13px; color: #999;}        
         
 #topper { position:fixed; top:44px; width:100%; z-index:2; background-color:#efefef; border-bottom:1px solid #999999; height:60px; color:#333; }
-#topper h1 { margin-left:10px; font-size:18px; font-family:Georgia, serif; }
-#topper h2 { margin-left:10px; font-size:12px; font-weight:normal; line-height:6px; }
-#topper #about { text-transform:uppercase; position:absolute; right:10px; top:8px; width:80px; height:40px; border:1px solid #999999; font-size:12px; line-height:13px; font-weight:bold; color:#777; }
-#topper #find2 { display:none; }
-#topper #search2 { display:none; }
-
-#find,#find2 { float:left; background-image:url('../img/find.png'); background-repeat:no-repeat; background-position:9px 9px; text-align:left; padding-left:35px; margin:10px 0 10px 10px; text-transform:uppercase; width:110px; height:40px; border:1px solid #999999; font-size:12px; line-height:13px; font-weight:bold; color:#777; }
-#search, #search2 { float:right; margin:10px;}
-#search .add-on, #search2 .add-on { line-height:30px; border:1px solid #999999; }
-#search span.add-on, #search2 span.add-on { height:30px; }
-#search input[type="text"], #search2 input[type="text"] { height:30px; border:1px solid #999999; width:105px; font-size:11px; }
-#search input[type="submit"], #search2 input[type="submit"] { height:40px; width:40px; }
+#topper h1 { font-size:18px; font-family:Georgia, serif; }
+#topper #about { text-transform:uppercase; position:absolute; right: 30px; top:8px; width:80px; height:40px; border:1px solid #999999; font-size:12px; line-height:13px; font-weight:bold; color:#777; }
 
 #legend {
     display:none;
@@ -193,19 +183,21 @@ p.desc {background:url('../img/npr_75x25.png') no-repeat center left; padding-le
 .danger-extreme { background-color: #D73027; }
 .danger-not-reported { background-color: #eeeeee; }
 
-@media (min-width:650px) {
-    #topper { top:44px; }
-    #topper h1 { font-size:28px; line-height:56px; margin-left:15px; float:left; }
-    #topper h2 { font-size:14px; line-height:66px; margin-left:15px; float:left; }
+@media (max-width: 767px) {
+    /* Override bootstrap */
+    body { padding: 0; padding-right: 0; }
+
+    nav { padding-left: 20px; }
+    #topper { padding-left: 20px; } 
+}
+
+@media (min-width:767px) {
+    #topper { padding-left: 30px; } 
+    #topper h1 { font-size:28px; line-height:56px; float:left; }
     #topper #about { width:150px; font-size:14px; }
-    #find,#find2 { width:164px; font-size:12px; height:40px; }
 }
 
 @media (min-width:960px) {
     #topper #about { display:none; }
     #legend { display:block; }
-    #topper #find2 { display:block; float:right; }
-    #topper #search2 { display:block; float:right; margin-right:15px; }
-    #topper #search2 input[type="text"] { font-size:16px; width:250px; }
-    #bottom { display:none; }
 }
