@@ -404,11 +404,14 @@ def cron_test():
 """
 Geo
 """
+def psql(command):
+    local('psql -q %s -c "%s"' % (env.project_slug, command))
+
 def geoprocess():
     # Setup
     with settings(warn_only=True):
         local('createdb %(project_slug)s' % env)
-        local('psql -q %(project_slug)s -c "CREATE EXTENSION postgis"' % env)
+        psql('CREATE EXTENSION postgis')
 
     # Load shapefiles
     local('ogr2ogr -f "PostgreSQL" PG:"dbname=%(project_slug)s" data/buildings/Buildings.shp -nln buildings -t_srs EPSG:4326' % env)
@@ -416,13 +419,19 @@ def geoprocess():
     local('ogr2ogr -f "PostgreSQL" PG:"dbname=%(project_slug)s" data/path_polygon/path_polygon.shp -nln path_polygon -t_srs EPSG:4326' % env)
     
     # Generate parcel intersections
-    local('psql -q %(project_slug)s -c "alter table parcels add column is_in_path bool;"' % env)
-    local('psql -q %(project_slug)s -c "update parcels set is_in_path=true from path_polygon where ST_intersects(parcels.wkb_geometry, path_polygon.wkb_geometry) and ST_isValid(parcels.wkb_geometry)"' % env);
+    psql('alter table parcels add column is_in_path bool')
+    psql('update parcels set is_in_path=true from path_polygon where ST_intersects(parcels.wkb_geometry, path_polygon.wkb_geometry) and ST_isValid(parcels.wkb_geometry)')
     local('ogr2ogr -f "ESRI Shapefile" data/intersected_parcels/ PG:"dbname=%(project_slug)s" parcels -t_srs EPSG:4326 -overwrite' % env)
 
+    # Merge parcel data onto buildings
+    psql('alter table buildings add column parcel_fid integer')
+    psql('alter table buildings add column accttype varchar(30)')
+    psql('alter table buildings add column locationad varchar(100)')
+    psql('update buildings set parcel_fid=parcels.ogc_fid, accttype=parcels.accttype, locationad=parcels.locationad from parcels where ST_contains(parcels.wkb_geometry, ST_centroid(buildings.wkb_geometry))')
+
     # Generate building intersections
-    local('psql -q %(project_slug)s -c "alter table buildings add column is_in_path bool;"' % env)
-    local('psql -q %(project_slug)s -c "update buildings set is_in_path=true from path_polygon where ST_intersects(buildings.wkb_geometry, path_polygon.wkb_geometry)"' % env);
+    psql('alter table buildings add column is_in_path bool')
+    psql('update buildings set is_in_path=true from path_polygon where ST_intersects(buildings.wkb_geometry, path_polygon.wkb_geometry)');
     local('ogr2ogr -f "ESRI Shapefile" data/intersected_buildings/ PG:"dbname=%(project_slug)s" buildings -t_srs EPSG:4326 -overwrite' % env)
 
 """
