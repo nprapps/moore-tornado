@@ -410,6 +410,7 @@ def psql(command):
 def geoprocess():
     # Setup
     with settings(warn_only=True):
+        local('dropdb %(project_slug)s' % env)
         local('createdb %(project_slug)s' % env)
         psql('CREATE EXTENSION postgis')
 
