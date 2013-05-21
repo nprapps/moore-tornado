@@ -161,13 +161,6 @@ $(document).ready(function(){
             }
         });
     
-        if(window.location.search.indexOf("embed") > 0) {
-            $("#nav").hide();
-            $("#embed-nav").show();
-            $("#topper").addClass("embedded");
-            $("#embed-nav").click(function(){window.open('http://apps.npr.org/fire-forecast');});
-        }    
-
         //for old browsers and for IE in a frame
         if (!navigator.geolocation) {
             $("#find,find2").hide();
