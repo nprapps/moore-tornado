@@ -4,13 +4,13 @@ $(document).ready(function(){
         m.addLayer(data[0].layer);
         m.setZoomRange(12, 18);
         m.interaction.auto();
+        m.ui.zoomer.add();
         
         var width = $(window).width();
         
         if(width > 768){
             m.zoom(14);
             m.center({ lat: 35.338, lon: -97.486 });
-            m.ui.zoomer.add();
         } else {
             m.zoom(13);
             m.center({ lat: 35.338, lon: -97.486 });
