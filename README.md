@@ -234,3 +234,14 @@ You can also deploy the configuration files independently of the setup command b
 ```
 fab deploy_confs
 ```
+
+Running fab geoprocess
+----------------------
+
+You need the following folders to contain the correct shapefiles:
+
+* `data/buildings/Buildings.shp`
+* `data/county_parcels/ParcelPoly_4.shp'
+* `data/path_polygon/path_polygon.shp`
+
+Then run `fab geoprocess`. The created database will be called `moore-tornado`.
