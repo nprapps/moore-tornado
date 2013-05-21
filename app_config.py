@@ -14,7 +14,7 @@ import os
 NAMES
 """
 # Project name used for display
-PROJECT_NAME = 'moore-tornado'
+PROJECT_NAME = 'Moore Tornado Project'
 
 # Project name used for paths on the filesystem and in urls
 # Use dashes, not underscores
@@ -30,7 +30,7 @@ PRODUCTION_S3_BUCKETS = ['apps.npr.org', 'apps2.npr.org']
 PRODUCTION_SERVERS = ['cron.nprapps.org']
 
 STAGING_S3_BUCKETS = ['stage-apps.npr.org']
-STAGING_SERVERS = ['50.112.92.131']
+STAGING_SERVERS = ['cron-staging.nprapps.org']
 
 # Should code be deployed to the web/cron servers?
 DEPLOY_TO_SERVERS = False
