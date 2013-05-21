@@ -3,21 +3,22 @@ $(document).ready(function(){
         window.m = mapbox.map('map');
         m.addLayer(data[0].layer);
         m.addLayer(data[1].layer);
-        m.setZoomRange(3,9);
+        m.setZoomRange(11, 15);
         m.interaction.auto();
     
         var width = $(window).width();
+
         if(width >= 960){
-            m.zoom(4);
-            m.center({ lat: 40, lon: -108 });
+            m.zoom(11);
+            m.center({ lat: 35.338, lon: -97.486 });
             m.ui.zoomer.add();
         } else if (width >= 650){
-            m.zoom(4);
-            m.center({ lat: 40, lon: -97 });
+            m.zoom(11);
+            m.center({ lat: 35.338, lon: -97.486 });
             m.ui.zoomer.add();
         } else {
-            m.zoom(3);
-            m.center({ lat: 40, lon: -97 });
+            m.zoom(12);
+            m.center({ lat: 35.338, lon: -97.486 });
         }
     
         var markerLayer = mapbox.markers.layer();
