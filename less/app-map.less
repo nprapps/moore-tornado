@@ -28,7 +28,13 @@ p.desc {
     line-height: 15px;
     font-size: 13px;
     color: #999;
-}        
+}
+
+nav {
+    position: fixed;
+    z-index:2;
+    width:100%;
+}
         
 #topper {
     position:fixed;
@@ -36,31 +42,32 @@ p.desc {
     width:100%;
     z-index:2;
     background-color:#ebebeb;
-    height:60px;
+    height:44px;
     color:#333;
+    padding-left:30px;
 }
 
 #topper h1 {
-    font-size: 12px;
+    font-size: 14px;
     text-transform: uppercase;
     font-family: Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    margin-top: 16px;
-    color:#555;
+    line-height:44px;
+    color:#111;
 }
 
 #topper #about {
+    display:none;
     text-transform: uppercase;
     position: absolute;
-    right: 30px;
-    top: 8px;
-    width: 80px;
-    height: 40px;
-    border: 1px solid #999999;
+    right: 20px;
+    top: 0px;
+    width: 90px;
+    height: 44px;
+    border: none;
     font-size: 11px;
     line-height: 13px;
-    font-weight: bold;
-    color: #777;
+    color: #111;
+    background-color: #e0e0e0;
 }
 
 #legend {
@@ -139,7 +146,7 @@ p.desc {
 
 .zoomer {
     right:14px;
-    top:76px;
+    top:99px;
     left:auto;
 }
 
@@ -192,7 +199,15 @@ p.desc {
 .danger-not-reported { background-color: #eeeeee; }
 
 @media (max-width: 767px) {
-    /* Override bootstrap */
+    // Override bootstrap
+    body { padding: 0; padding-right: 0; }
+    nav { padding-left: 20px; }
+    #topper { padding-left: 20px; }
+    #topper #about { display:block; }
+}
+
+/*@media (max-width: 767px) {
+    // Override bootstrap
     body { padding: 0; padding-right: 0; }
 
     nav { padding-left: 20px; }
@@ -216,4 +231,4 @@ p.desc {
 @media (min-width:960px) {
     #topper #about { display:none; }
     #legend { display:block; }
-}
+}*/
