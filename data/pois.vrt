@@ -1,8 +1,0 @@
-<OGRVRTDataSource>
-    <OGRVRTLayer name="pois">
-        <SrcDataSource>data/pois.csv</SrcDataSource>
-        <GeometryType>wkbPoint</GeometryType>
-        <LayerSRS>EPSG:4326</LayerSRS>
-        <GeometryField encoding="PointFromColumns" x="Lon" y="Lat"/>
-   </OGRVRTLayer>
-</OGRVRTDataSource>

@@ -1,6 +1,7 @@
 // Global variables
 @img-root: "../img";
 
+html, body, #map { height: 100%; }
 h1, h2, h3, h4, h5, h6 { font-family: Helvetica, Arial, sans-serif; margin: 0 0 12px 0; line-height: 1.35em; }
 a, a:link, a:visited { color: #000; }
 a:hover, a:active { color: #36c; }
@@ -8,14 +9,8 @@ a:hover, a:active { color: #36c; }
 // Content
 .container.the-goods { margin-top: 104px; }
 
-@media (max-width: 979px) {
-    .container.the-goods { margin-top:0; }
-}
 
-// IMPORTED
-
-html, body, #map { height: 100%; }
-
+// ZOOM LENS OVERLAY
 #map {
     position: absolute;
     width: 100%;
@@ -25,25 +20,20 @@ html, body, #map { height: 100%; }
     pointer-events: all;
     cursor: none;
 }
-
 #zoommap {
     width: 400px;
     height: 400px;
 }
-
 #zoomlens {
     overflow: visible;
     top: -9999px;
     left: -9999px;
 }
-
 #border {
     margin: -5px;
-    border: #fff solid 5px;
-//    border-radius: 50%;
+    border: #fff solid 4px;
     box-shadow: 0px 0px 10px #888;
 }
-
 .overlay {
     position: absolute;
     pointer-events: none;
@@ -52,9 +42,7 @@ html, body, #map { height: 100%; }
     height: 400px;
 }
 
-.rotater {
-}
-        
+
 p.desc {
     background: url('../img/npr_75x25.png') no-repeat center left;
     padding-left: 85px;
@@ -244,6 +232,11 @@ nav {
 .danger-very-high { background-color: #FC8D59; }
 .danger-extreme { background-color: #D73027; }
 .danger-not-reported { background-color: #eeeeee; }
+
+
+@media (max-width: 979px) {
+    .container.the-goods { margin-top:0; }
+}
 
 @media (max-width: 767px) {
     // Override bootstrap
