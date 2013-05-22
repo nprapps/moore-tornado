@@ -1,9 +1,13 @@
 {% extends '_base.html' %}
 
 {% block extra_css %}
-    {{ CSS.push('css/mapbox.css') }}
     {{ CSS.push('less/app-map.less') }}
+    {{ CSS.push('css/mapbox.css') }}
 {% endblock %}
+
+{% block extra_head_js %}
+    {{ JS.push('js/lib/mapbox.js') }}
+{% endblock extra_head_js %}
 
 {% block map_content %}
     <div id="topper">
@@ -37,6 +41,7 @@
 {% endblock %}
 
 {% block extra_foot %}
-    {# This JS breaks when compressed with other assets #}
-    <script type="text/javascript" src="js/lib/mapbox.js"></script>
-{% endblock %}
+<!--[if lte IE 8]>
+    <link href='css/mapbox.ie.css' rel='stylesheet' />
+<![endif]-->
+{% endblock extra_foot %}
