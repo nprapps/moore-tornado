@@ -289,7 +289,7 @@ parcels (polygons)
 * Geometry field: wkb_geometry
 * SRS: WGS84
 
-damage-bg (polygons - carto styles the outline only)
+damage-bg (polygons - carto styles the background only)
 * Type: File
 * ID: damage-bg
 * Datasource: storm_survey_damage/storm_survey_damage.shp
