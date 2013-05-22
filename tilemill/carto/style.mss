@@ -2,12 +2,10 @@ Map {
   background-color: #fff;
 }
 
-#tornado {
-  [SymbolID = 1] {
-    line-width: 3;
-    line-color: #c00;
-    line-opacity: .3;
-  }
+#damage {
+  line-width: 3;
+  line-color: #c00;
+  line-opacity: .3;
 }
 
 #roads {
@@ -68,35 +66,32 @@ Map {
   }
 }
 
-.buildings {
+#buildings {
   polygon-fill: #e2e2e2;
   polygon-opacity: .8;
   line-width: .5;
   line-color: #ccc;
   [zoom < 15] { line-width: 0; }
+
+  [is_in_path = true] {
+  	polygon-fill: #A23520;
+  	polygon-opacity: .5;
+  }
 }
 
+#parcels {
+  polygon-fill: #eee;
+  line-width: 1;
+  line-color: #fff;
+  [is_in_path = true] {
+  	polygon-fill: #A23520;
+  	polygon-opacity: .5;
+  }
+}
 
 /*
-#tornado-bg {
-  [SymbolID = 1] {
-  	polygon-fill: #ECA395;
-  	polygon-opacity: .5;
-  }
+#damage-bg {
+  polygon-fill: #ECA395;
+  polygon-opacity: .5;
 }
 */
-
-.parcels {
-  [is_in_path = 1] {
-  	polygon-fill: #A23520;
-  	polygon-opacity: .5;
-  }
-  
-  
-  /*
-  [accttype = 'Residential'] {
-  	polygon-fill: #A23520;
-  	polygon-opacity: .5;
-  }
-  */
-}
