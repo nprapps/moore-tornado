@@ -407,12 +407,19 @@ Geo
 def psql(command):
     local('psql -q %s -c "%s"' % (env.project_slug, command))
 
+def download_pois():
+    local('curl --output data/pois.csv "https://docs.google.com/spreadsheet/pub?key=0AjlIKRG8DtTqdGM4VkhDUmNrb2FLQW45d2tmbE5SMlE&single=true&gid=0&output=csv"')
+
 def geoprocess():
     # Setup
     with settings(warn_only=True):
         local('dropdb %(project_slug)s' % env)
         local('createdb %(project_slug)s' % env)
         psql('CREATE EXTENSION postgis')
+
+    # Load POIs
+    download_pois()
+    local('ogr2ogr -f "PostgreSQL" PG:"dbname=moore-tornado" data/pois.vrt -nln pois -t_srs EPSG:4326')
 
     # Load shapefiles
     local('ogr2ogr -f "PostgreSQL" PG:"dbname=%(project_slug)s" data/buildings/Buildings.shp -nln buildings -t_srs EPSG:4326 -nlt MultiPolygon' % env)
@@ -423,6 +430,11 @@ def geoprocess():
 
     # Merge buildings tables
     psql('insert into buildings (wkb_geometry, merge, elev, shape_leng, shape_area) select wkb_geometry, merge, elev, shape_leng, shape_area from okc_buildings')
+
+    # Add POI data to parcels
+    psql('alter table parcels add column location varchar') 
+    psql('alter table parcels add column type varchar') 
+    psql('update parcels set location=pois.location, type=pois.type from pois where ST_contains(parcels.wkb_geometry, pois.wkb_geometry)')
     
     # Generate parcel intersections
     psql('alter table parcels add column is_in_path bool')
@@ -431,9 +443,11 @@ def geoprocess():
 
     # Merge parcel data onto buildings
     psql('alter table buildings add column parcel_fid integer')
-    psql('alter table buildings add column accttype varchar(30)')
-    psql('alter table buildings add column locationad varchar(100)')
-    psql('update buildings set parcel_fid=parcels.ogc_fid, accttype=parcels.accttype, locationad=parcels.locationad from parcels where ST_contains(parcels.wkb_geometry, ST_centroid(buildings.wkb_geometry))')
+    psql('alter table buildings add column accttype varchar')
+    psql('alter table buildings add column locationad varchar')
+    psql('alter table buildings add column location varchar')
+    psql('alter table buildings add column type varchar')
+    psql('update buildings set parcel_fid=parcels.ogc_fid, accttype=parcels.accttype, locationad=parcels.locationad, location=parcels.location, type=parcels.type from parcels where ST_contains(parcels.wkb_geometry, ST_centroid(buildings.wkb_geometry))')
 
     # Generate building intersections
     psql('alter table buildings add column is_in_path bool')
