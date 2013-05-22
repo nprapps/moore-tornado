@@ -1,5 +1,25 @@
 Map {
-//  background-color: #666;
+  background-color: #666;
+}
+
+#pois {
+//  marker-width: 30px;
+//  marker-type: ellipse;
+//  marker-allow-overlap: true;
+
+  ::labels {
+    text-name: [location];
+    text-face-name: "Helvetica Neue Bold Italic";
+    text-fill: #333;
+    text-halo-fill: #fff;
+    text-halo-radius: 2;
+    text-opacity: .8;
+    text-wrap-width: 30;
+    text-character-spacing: 2;
+    [zoom < 16]  { text-size: 11px; }
+    [zoom < 14]  { text-size: 9px; }
+    [zoom >= 16] { text-size: 12px; }
+  }
 }
 
 #damage {
@@ -19,7 +39,7 @@ Map {
     line-width: 1;
     [CLASS = 'A15'] { line-width: 2; }
   }
-  [zoom >= 15 ] {
+  [zoom >= 16 ] {
     line-width: 1;
     [CLASS = 'A15'] { line-width: 3; }
   }
@@ -34,6 +54,7 @@ Map {
     text-halo-radius: 2;
     text-avoid-edges: true;
     text-size: 13px;
+    text-character-spacing: 2;
     text-opacity: 0;
 
     [CLASS = 'A15'] {
@@ -71,19 +92,20 @@ Map {
   [is_in_path = true] {
     polygon-fill: #D8472B;
     line-color: #D8472B;
-    [zoom < 17] {
+    [zoom < 16] {
       polygon-opacity: .7;
       line-opacity: 0;
     }
-    [zoom >= 17] {
-      line-width: 1;
-      line-opacity: .7;
-      polygon-opacity: .2;
+    [zoom >= 16] {
+      line-color: #fff;
+      line-width: 1.5;
+      line-opacity: .8;
+      polygon-opacity: 0;
     }
-    [accttype = 'Commercial'] {
-	  polygon-fill: #F3D469;
-      line-color: #B39429;
-    }
+//    [accttype = 'Commercial'] {
+//	  polygon-fill: #F3D469;
+//      line-color: #B39429;
+//    }
   }
 }
 
@@ -94,10 +116,17 @@ Map {
     line-opacity: .1;
   	polygon-fill: #FBF1CD;
   	polygon-opacity: .1;
+    [zoom >= 16] {
+      polygon-opacity: 0;
+    }
   }
 }
 
+/*
 #damage-bg {
-  polygon-fill: #6C2315;
-  polygon-opacity: .2;
+  [zoom < 16] {
+    polygon-fill: #6C2315;
+    polygon-opacity: .2;
+  }
 }
+*/
