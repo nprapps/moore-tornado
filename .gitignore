@@ -40,3 +40,9 @@ www/js/app_config.js
 confs/rendered/*
 data/copy.xls
 tumblr/rendered-theme.html
+
+data/buildings
+data/okc_buildings
+data/intersected_buildings
+data/intersected_parcels
+data/county_parcels

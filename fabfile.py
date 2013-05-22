@@ -438,7 +438,11 @@ def geoprocess():
     
     # Generate parcel intersections
     psql('alter table parcels add column is_in_path bool')
-    psql('update parcels set is_in_path=true from storm_survey_damage where ST_intersects(parcels.wkb_geometry, storm_survey_damage.wkb_geometry) and ST_isValid(parcels.wkb_geometry)')
+    psql('alter table parcels add column intensity varchar')
+
+    for intensity in ['EF0', 'EF1', 'EF2', 'EF3', 'EF4', 'EF5']:
+        psql('update parcels set is_in_path=true, intensity=storm_survey_damage.Name from storm_survey_damage where ST_intersects(parcels.wkb_geometry, storm_survey_damage.wkb_geometry) and ST_isValid(parcels.wkb_geometry) and storm_survey_damage.Name=\'%s\'' % intensity)
+    
     local('ogr2ogr -f "ESRI Shapefile" data/intersected_parcels/ PG:"dbname=%(project_slug)s" parcels -t_srs EPSG:4326 -overwrite' % env)
 
     # Merge parcel data onto buildings
@@ -451,7 +455,11 @@ def geoprocess():
 
     # Generate building intersections
     psql('alter table buildings add column is_in_path bool')
-    psql('update buildings set is_in_path=true from storm_survey_damage where ST_intersects(buildings.wkb_geometry, storm_survey_damage.wkb_geometry)');
+    psql('alter table buildings add column intensity varchar')
+
+    for intensity in ['EF0', 'EF1', 'EF2', 'EF3', 'EF4', 'EF5']:
+        psql('update buildings set is_in_path=true, intensity=storm_survey_damage.Name from storm_survey_damage where ST_intersects(buildings.wkb_geometry, storm_survey_damage.wkb_geometry) and storm_survey_damage.Name=\'%s\'' % intensity);
+    
     local('ogr2ogr -f "ESRI Shapefile" data/intersected_buildings/ PG:"dbname=%(project_slug)s" buildings -t_srs EPSG:4326 -overwrite' % env)
 
 """
