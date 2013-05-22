@@ -4,12 +4,13 @@ Map {
 
 #damage {
   line-width: 3;
-  line-color: #EFC637;
-  line-opacity: .5;
+  line-color: #D8472B;
+  line-opacity: .8;
 }
 
 #roads {
-  line-color: #bababa;
+  line-color: #fff;
+  line-opacity: .5;
   [zoom <= 12 ] {
     line-width: 0;
     [CLASS = 'A15'] { line-width: 2; }
@@ -68,10 +69,21 @@ Map {
 
 #buildings {
   [is_in_path = true] {
-    line-width: .5;
-    line-color: #ccc;
-  	polygon-fill: #F7E39B;
-  	polygon-opacity: .3;
+    polygon-fill: #D8472B;
+    line-color: #D8472B;
+    [zoom < 17] {
+      polygon-opacity: .7;
+      line-opacity: 0;
+    }
+    [zoom >= 17] {
+      line-width: 1;
+      line-opacity: .7;
+      polygon-opacity: .2;
+    }
+    [accttype = 'Commercial'] {
+	  polygon-fill: #F3D469;
+      line-color: #B39429;
+    }
   }
 }
 
@@ -79,15 +91,13 @@ Map {
   [is_in_path = true] {
     line-width: 1;
     line-color: #fff;
-    line-opacity: .2;
+    line-opacity: .1;
   	polygon-fill: #FBF1CD;
   	polygon-opacity: .1;
   }
 }
 
-/*
 #damage-bg {
-  polygon-fill: #ECA395;
-  polygon-opacity: .5;
+  polygon-fill: #6C2315;
+  polygon-opacity: .2;
 }
-*/
