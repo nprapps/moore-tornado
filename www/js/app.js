@@ -22,7 +22,8 @@ $(document).ready(function(){
         attributionControl: false
     });
 
-    var zl = document.getElementById('zoomlens');
+    var $zl = $('#zoomlens');
+    var zl_radius = $zl.width() / 2;
 
     map.on('mousemove', update);
     map.on('zoomend', zoom);
@@ -32,8 +33,8 @@ $(document).ready(function(){
     }
 
     function update(e) {
-        zl.style.top = ~~e.containerPoint.y-100 + 'px';
-        zl.style.left = ~~e.containerPoint.x-100 + 'px';
+        $zl.css('top', ~~e.containerPoint.y - zl_radius + 'px');
+        $zl.css('left', ~~e.containerPoint.x - zl_radius + 'px');
         zoommap.setView(e.latlng, map.getZoom(), true);
     }
 
