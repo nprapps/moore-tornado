@@ -17,6 +17,7 @@ moore-tornado
 * [Deploy to EC2](#deploy-to-ec2)
 * [Install cron jobs](#install-cron-jobs)
 * [Install web services](#install-web-services)
+* [TileMill project settings](#tilemill-project-settings)
 
 What is this?
 -------------
@@ -245,3 +246,50 @@ You need the following folders to contain the correct shapefiles:
 * `data/path_polygon/path_polygon.shp` (committed to repository)
 
 Then run `fab geoprocess`. The created database will be called `moore-tornado`.
+
+
+TileMill project settings
+-------------------------
+
+Layers:
+
+pois (points)
+* Type: PostGIS
+* ID: pois
+* Connection: dbname=moore-tornado host=localhost
+* Table: pois
+* Geometry field: wkb_geometry
+* SRS: WGS84
+
+damage (polygons - carto styles the outline only)
+* Type: File
+* ID: damage
+* Datasource: storm_survey_damage/storm_survey_damage.shp
+
+roads (lines)
+* Type: File
+* ID: roads
+* Datasource: ACOGStreetData/Centerlines_2.shp
+
+buildings (polygons)
+* Type: PostGIS
+* ID: buildings
+* Connection: dbname=moore-tornado host=localhost
+* Table: buildings
+* Unique key: ogc_fid
+* Geometry field: wkb_geometry
+* SRS: WGS84
+
+parcels (polygons)
+* Type: PostGIS
+* ID: parcels
+* Connection: dbname=moore-tornado host=localhost
+* Table: parcels
+* Unique key: ogc_fid
+* Geometry field: wkb_geometry
+* SRS: WGS84
+
+damage-bg (polygons - carto styles the outline only)
+* Type: File
+* ID: damage-bg
+* Datasource: storm_survey_damage/storm_survey_damage.shp
