@@ -46,3 +46,4 @@ data/okc_buildings
 data/intersected_buildings
 data/intersected_parcels
 data/county_parcels
+data/pois.csv

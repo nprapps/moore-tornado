@@ -425,7 +425,6 @@ def geoprocess():
     local('ogr2ogr -f "PostgreSQL" PG:"dbname=%(project_slug)s" data/buildings/Buildings.shp -nln buildings -t_srs EPSG:4326 -nlt MultiPolygon' % env)
     local('ogr2ogr -f "PostgreSQL" PG:"dbname=%(project_slug)s" data/okc_buildings/BuildingFootprints.shp -nln okc_buildings -t_srs EPSG:4326 -nlt MultiPolygon' % env)
     local('ogr2ogr -f "PostgreSQL" PG:"dbname=%(project_slug)s" data/county_parcels/ParcelPoly_4.shp -nln parcels -t_srs EPSG:4326 -nlt MultiPolygon' % env)
-    local('ogr2ogr -f "PostgreSQL" PG:"dbname=%(project_slug)s" data/path_polygon/path_polygon.shp -nln path_polygon -t_srs EPSG:4326' % env)
     local('ogr2ogr -f "PostgreSQL" PG:"dbname=%(project_slug)s" data/storm_survey_damage/storm_survey_damage.shp -nln storm_survey_damage -t_srs EPSG:4326' % env)
 
     # Merge buildings tables
