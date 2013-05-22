@@ -1,5 +1,6 @@
 var IS_MOBILE = Modernizr.touch; // disable certain features for touch devices
 var WINDOW_WIDTH = $('body').width();
+var ZOOM_LENS_THRESHOLD = 16;
 
 $(document).ready(function(){
     
@@ -46,32 +47,38 @@ $(document).ready(function(){
         var zl_radius = $zl.width() / 2;
     
         map.on('mousemove', function(e) {
-            $zl.css('top', ~~e.containerPoint.y - zl_radius + 'px');
-            $zl.css('left', ~~e.containerPoint.x - zl_radius + 'px');
-            zoommap.setView(e.latlng, map.getZoom(), true);
+            if (map.getZoom() >= ZOOM_LENS_THRESHOLD) {
+                $zl.css('top', ~~e.containerPoint.y - zl_radius + 'px');
+                $zl.css('left', ~~e.containerPoint.x - zl_radius + 'px');
+                zoommap.setView(e.latlng, map.getZoom(), true);
             
-            //THIS DOESNT WORK NOW, need to fix since we rejiggered the layers (it's ticketed)
-            zoommap.gridLayer.getData(e.latlng,function(data){
-                if(data){
-                
-                    var html = '';
-                    if(data.locationad) {
-                        html += '<p class="locationad">' + data.locationad + '</p>';                    
+                //THIS DOESNT WORK NOW, need to fix since we rejiggered the layers (it's ticketed)
+                zoommap.gridLayer.getData(e.latlng,function(data){
+                    if(data){
+                        var html = '';
+                        if(data.locationad) {
+                            html += '<p class="locationad">' + data.locationad + '</p>';                    
+                        }
+                        html += '<p class="owner">';
+                        if(data.ownername1) {
+                            html += ' ' + data.ownername1;
+                        }
+                        if(data.ownername2) {
+                            html += ' ' + data.ownername2;
+                        }
+                        html += '</p>'
+                        $tooltip.html(html);
                     }
-                    html += '<p class="owner">';
-                    if(data.ownername1) {
-                        html += ' ' + data.ownername1;
-                    }
-                    if(data.ownername2) {
-                        html += ' ' + data.ownername2;
-                    }
-                    html += '</p>'
-                    $tooltip.html(html);
-                }
-            });
+                });
+            }
         });
         map.on('zoomend', function(e) {
-            if (zoommap._loaded) zoommap.setZoom(map.getZoom());
+            if (map.getZoom() >= ZOOM_LENS_THRESHOLD) {
+                $zl.show();
+                if (zoommap._loaded) zoommap.setZoom(map.getZoom());
+            } else {
+                $zl.hide();
+            }
         });
         map.gridLayer.on('mousemove', function(e){
            console.log(e.data); 
@@ -86,7 +93,9 @@ $(document).ready(function(){
         } else {
             $('.hide-overlay').removeClass('engaged');
             map.addLayer(info_layer);
-            $zl.show();
+            if (map.getZoom() >= ZOOM_LENS_THRESHOLD) {
+                $zl.show();
+            }
         }
     });
 });
