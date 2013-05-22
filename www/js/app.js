@@ -5,7 +5,6 @@ $(document).ready(function(){
         maxZoom:19
     });
     map.addLayer(L.mapbox.tileLayer('npr.map-g7ewv5af'));
-    //map.addLayer(L.mapbox.tileLayer('http://localdev.npr.org:20009/api/Project/ok-moore-tornado/'));
     
     L.control.scale().addTo(map);
     
@@ -15,8 +14,9 @@ $(document).ready(function(){
     } else {
         map.setView([35.338, -97.486], 13);
     }
-    
-    var zoommap = L.mapbox.map('zoommap', 'npr.map-g7ewv5af,npr.ok-moore-tornado-satellite', {
+
+    var zoommap = L.mapbox.map('zoommap', 'npr.ok-moore-tornado-satellite', {    
+//    var zoommap = L.mapbox.map('zoommap', 'http://localdev.npr.org:20009/api/Project/ok-moore-tornado/', {
         fadeAnimation: false,
         zoomControl: false,
         attributionControl: false
