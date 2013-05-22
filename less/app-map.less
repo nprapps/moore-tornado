@@ -39,15 +39,30 @@ a:hover, a:active { color: #36c; }
     overflow: visible;
     top: -9999px;
     left: -9999px;
-}
-#zoommap {
-    width: 400px;
-    height: 400px;
-}
-#border {
-    margin: -5px;
-    border: #fff solid 4px;
-    box-shadow: 0px 0px 10px #888;
+    
+    #zoommap {
+        width: 400px;
+        height: 400px;
+    }
+    #border {
+        margin: -5px;
+        border: #fff solid 4px;
+        box-shadow: 0px 0px 10px #888;
+    }
+    .info-box {
+        position:absolute;
+        left:-5px;
+        top:400px;
+        background-color:white;
+        height:100px;
+        width:408px;
+    
+        p {
+            font-size: 12px;
+            line-height: 1.3em;
+            margin: 0;
+        }
+    }
 }
 .overlay {
     position: absolute;
@@ -56,22 +71,9 @@ a:hover, a:active { color: #36c; }
     width: 400px;
     height: 400px;
 }
+
 .leaflet-container {
     background:none;
-}
-#tooltip {
-    position:absolute;
-    left:-5px;
-    top:400px;
-    background-color:white;
-    height:100px;
-    width:408px;
-    
-    p {
-        font-size: 12px;
-        line-height: 1.3em;
-        margin: 0;
-    }
 }
 
 p.desc {
@@ -99,43 +101,67 @@ nav {
     height:44px;
     color:#333;
     padding-left:30px;
+    
+    h1 {
+        font-size: 14px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        line-height: 44px;
+        color:#111;
+    }
+    
+    #about {
+        text-transform: uppercase;
+        position: absolute;
+        right: 20px;
+        top: 0px;
+        width: 90px;
+        height: 44px;
+        border: none;
+        font-size: 11px;
+        line-height: 13px;
+        color: #111;
+        background-color: #e0e0e0;
+    }
+    
+    .hide-overlay {
+        text-transform: uppercase;
+        position: absolute;
+        right: 110px;
+        top: 0px;
+        width: 90px;
+        height: 44px;
+        border: none;
+        border-right:2px solid white;
+        font-size: 11px;
+        line-height: 13px;
+        color: #111;
+        background-color: #e0e0e0;
+    }
 }
 
-#topper h1 {
-    font-size: 14px;
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    line-height: 44px;
-    color:#111;
-}
-
-#topper #about {
-    text-transform: uppercase;
-    position: absolute;
-    right: 20px;
-    top: 0px;
-    width: 90px;
-    height: 44px;
-    border: none;
-    font-size: 11px;
-    line-height: 13px;
-    color: #111;
-    background-color: #e0e0e0;
-}
-
-#topper .hide-overlay {
-    text-transform: uppercase;
-    position: absolute;
-    right: 110px;
-    top: 0px;
-    width: 90px;
-    height: 44px;
-    border: none;
-    border-right:2px solid white;
-    font-size: 11px;
-    line-height: 13px;
-    color: #111;
-    background-color: #e0e0e0;
+#info-bar {
+    display:none;
+    position:fixed;
+    top:90px;
+    width:100%;
+    z-index:2;
+    background-color:white;
+    height:44px;
+    color:#333;
+    padding-left:20px;
+    overflow:hidden;
+    
+    .info-box p {
+        font-size:12px;
+        line-height:44px;
+        margin:0;
+        display:inline;
+    }
+    
+    .info-box p.locationad {
+        margin-right:20px;
+    }
 }
 
 .hide-overlay {

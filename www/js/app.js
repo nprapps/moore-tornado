@@ -21,19 +21,51 @@ $(document).ready(function(){
     
     map.addLayer(base_layer);
     map.addLayer(info_layer);
-    // map.addLayer(info_grid);
+    map.addLayer(info_grid);
+    
+    function update_info_boxes(latlng){
+        var $info_boxes = $('.info-box');
+        info_grid.getData(latlng,function(data){
+            if(data){
+                var html = '';
+                if(data.locationad) {
+                    html += '<p class="locationad">' + data.locationad + '</p>';                    
+                }
+                html += '<p class="owner">';
+                if(data.ownername1) {
+                    html += ' ' + data.ownername1;
+                }
+                if(data.ownername2) {
+                    html += ' ' + data.ownername2;
+                }
+                html += '</p>'
+                $info_boxes.html(html);
+            }
+        });
+    }
     
     if (IS_MOBILE) {
+        map.addLayer(zoom_layer);
         map.setView([35.338, -97.486], 13);
+        
+        var $info_bar = $('#info-bar');
+        
+        map.on('click', function(e){
+            console.log('click');
+            update_info_boxes(e.latlng);
+        });
+        map.on('zoomend', function(e) {
+            if (map.getZoom() >= ZOOM_LENS_THRESHOLD) {
+                $info_bar.show()
+            } else {
+                $info_bar.hide()
+            }
+        });
         
         $('#about').click(function(){
             if($('.modal-body').children().length < 1 ) {
                 $('.legend-contents').clone().appendTo('.modal-body');
             }
-        });
-        
-        map.on('click', function(e){
-            
         });
     } else {
         map.setView([35.338, -97.486], 14);
@@ -44,10 +76,8 @@ $(document).ready(function(){
             attributionControl: false
         });
         zoommap.addLayer(zoom_layer);
-        zoommap.addLayer(info_grid);
     
         var $zl = $('#zoomlens');
-        var $tooltip = $('#tooltip');
         var zl_radius = $zl.width() / 2;
     
         map.on('mousemove', function(e){
@@ -55,23 +85,7 @@ $(document).ready(function(){
                 $zl.css('top', ~~e.containerPoint.y - zl_radius + 'px');
                 $zl.css('left', ~~e.containerPoint.x - zl_radius + 'px');
                 zoommap.setView(e.latlng, map.getZoom(), true);
-                info_grid.getData(e.latlng,function(data){
-                    if(data){
-                        var html = '';
-                        if(data.locationad) {
-                            html += '<p class="locationad">' + data.locationad + '</p>';                    
-                        }
-                        html += '<p class="owner">';
-                        if(data.ownername1) {
-                            html += ' ' + data.ownername1;
-                        }
-                        if(data.ownername2) {
-                            html += ' ' + data.ownername2;
-                        }
-                        html += '</p>'
-                        $tooltip.html(html);
-                    }
-                });
+                update_info_boxes(e.latlng);
             }
         });
         map.on('zoomend', function(e) {
