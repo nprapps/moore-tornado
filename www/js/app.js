@@ -15,7 +15,8 @@ $(document).ready(function(){
         
     var base_layer = L.mapbox.tileLayer('npr.map-g7ewv5af');
     var info_layer = L.mapbox.tileLayer('npr.ok-moore-tornado-satellite');
-    var zoom_layer = L.mapbox.tileLayer('npr.ok-moore-tornado-satellite');
+    var info_grid = L.mapbox.gridLayer('npr.ok-moore-tornado-satellite');
+    var zoom_layer = L.mapbox.tileLayer('npr.ok-moore-tornado-zoomlens');
     
     map.addLayer(base_layer);
     map.addLayer(info_layer);
@@ -38,7 +39,7 @@ $(document).ready(function(){
         });
         zoommap.addLayer(zoom_layer);
         //PROBABLY NEED TO ADD A GRID LAYER, MAYBE THE INFO LAYER GRID
-        //zoommap.addLayer(zoom_grid);
+        zoommap.addLayer(info_grid);
     
         var $zl = $('#zoomlens');
         var $tooltip = $('#tooltip');
