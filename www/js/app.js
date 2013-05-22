@@ -21,15 +21,20 @@ $(document).ready(function(){
     
     map.addLayer(base_layer);
     map.addLayer(info_layer);
+    // map.addLayer(info_grid);
     
     if (IS_MOBILE) {
         map.setView([35.338, -97.486], 13);
+        
         $('#about').click(function(){
             if($('.modal-body').children().length < 1 ) {
                 $('.legend-contents').clone().appendTo('.modal-body');
             }
         });
         
+        map.on('click', function(e){
+            
+        });
     } else {
         map.setView([35.338, -97.486], 14);
         
@@ -39,21 +44,18 @@ $(document).ready(function(){
             attributionControl: false
         });
         zoommap.addLayer(zoom_layer);
-        //PROBABLY NEED TO ADD A GRID LAYER, MAYBE THE INFO LAYER GRID
         zoommap.addLayer(info_grid);
     
         var $zl = $('#zoomlens');
         var $tooltip = $('#tooltip');
         var zl_radius = $zl.width() / 2;
     
-        map.on('mousemove', function(e) {
+        map.on('mousemove', function(e){
             if (map.getZoom() >= ZOOM_LENS_THRESHOLD) {
                 $zl.css('top', ~~e.containerPoint.y - zl_radius + 'px');
                 $zl.css('left', ~~e.containerPoint.x - zl_radius + 'px');
                 zoommap.setView(e.latlng, map.getZoom(), true);
-            
-                //THIS DOESNT WORK NOW, need to fix since we rejiggered the layers (it's ticketed)
-                zoommap.gridLayer.getData(e.latlng,function(data){
+                info_grid.getData(e.latlng,function(data){
                     if(data){
                         var html = '';
                         if(data.locationad) {
