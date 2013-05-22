@@ -253,6 +253,23 @@ TileMill project settings
 
 Layers:
 
+damage-zoomlens (export separately w/ buildings-zoomlens)
+* Type: PostGIS
+* ID: damage
+* Connection: dbname=moore-tornado host=localhost
+* Table: storm_survey_damage
+* Geometry field: wkb_geometry
+* SRS: WGS84
+
+buildings (polygons) - (export separately w/ damage-zoomlens)
+* Type: PostGIS
+* ID: buildings
+* Connection: dbname=moore-tornado host=localhost
+* Table: buildings
+* Unique key: ogc_fid
+* Geometry field: wkb_geometry
+* SRS: WGS84
+
 pois (points)
 * Type: PostGIS
 * ID: pois
@@ -262,9 +279,12 @@ pois (points)
 * SRS: WGS84
 
 damage (polygons - carto styles the outline only)
-* Type: File
+* Type: PostGIS
 * ID: damage
-* Datasource: storm_survey_damage/storm_survey_damage.shp
+* Connection: dbname=moore-tornado host=localhost
+* Table: storm_survey_damage
+* Geometry field: wkb_geometry
+* SRS: WGS84
 
 roads (lines)
 * Type: File
@@ -290,6 +310,9 @@ parcels (polygons)
 * SRS: WGS84
 
 damage-bg (polygons - carto styles the background only)
-* Type: File
-* ID: damage-bg
-* Datasource: storm_survey_damage/storm_survey_damage.shp
+* Type: PostGIS
+* ID: damage
+* Connection: dbname=moore-tornado host=localhost
+* Table: storm_survey_damage
+* Geometry field: wkb_geometry
+* SRS: WGS84
