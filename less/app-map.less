@@ -122,6 +122,30 @@ nav {
     background-color: #e0e0e0;
 }
 
+#topper .hide-overlay {
+    text-transform: uppercase;
+    position: absolute;
+    right: 110px;
+    top: 0px;
+    width: 90px;
+    height: 44px;
+    border: none;
+    border-right:2px solid white;
+    font-size: 11px;
+    line-height: 13px;
+    color: #111;
+    background-color: #e0e0e0;
+}
+
+.hide-overlay {
+    .on { display: inline; }
+    .off { display: none; }
+}
+.hide-overlay.engaged {
+    .on { display: none; }
+    .off { display: inline; }
+}
+
 #legend {
     position:absolute;
     z-index:2;

@@ -79,9 +79,13 @@ $(document).ready(function(){
     
     $('.hide-overlay').click(function(){
         if (map.hasLayer(info_layer)) {
+            $('.hide-overlay').addClass('engaged');
             map.removeLayer(info_layer);
+            $zl.hide();
         } else {
+            $('.hide-overlay').removeClass('engaged');
             map.addLayer(info_layer);
+            $zl.show();
         }
     });
 });
