@@ -1,5 +1,6 @@
 $(document).ready(function(){
-    mapbox.load(['npr.ok-moore-tornado'], function(data){
+//    mapbox.load(['npr.ok-moore-tornado'], function(data){
+    mapbox.load(['http://localhost:20009/api/Project/ok-moore-tornado'], function(data){
         window.m = mapbox.map('map');
         m.addLayer(data[0].layer);
         m.setZoomRange(12, 18);
