@@ -18,7 +18,6 @@ a:hover, a:active { color: #36c; }
     top: 0;
     left: 0;
     pointer-events: all;
-    cursor: none;
 }
 #zoommap {
     width: 400px;
@@ -44,7 +43,20 @@ a:hover, a:active { color: #36c; }
 .leaflet-container {
     background:none;
 }
-
+#tooltip {
+    position:absolute;
+    left:-5px;
+    top:400px;
+    background-color:white;
+    height:100px;
+    width:408px;
+    
+    p {
+        font-size: 12px;
+        line-height: 1.3em;
+        margin: 0;
+    }
+}
 
 p.desc {
     background: url('../img/npr_75x25.png') no-repeat center left;
