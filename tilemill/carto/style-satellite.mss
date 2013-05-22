@@ -1,11 +1,11 @@
 Map {
-//  background-color: #fff;
+//  background-color: #666;
 }
 
 #damage {
   line-width: 3;
-  line-color: #c00;
-  line-opacity: .3;
+  line-color: #EFC637;
+  line-opacity: .5;
 }
 
 #roads {
@@ -67,25 +67,21 @@ Map {
 }
 
 #buildings {
-  polygon-fill: #e2e2e2;
-  polygon-opacity: .8;
-  line-width: .5;
-  line-color: #ccc;
-  [zoom < 15] { line-width: 0; }
-
   [is_in_path = true] {
-  	polygon-fill: #A23520;
-  	polygon-opacity: .5;
+    line-width: .5;
+    line-color: #ccc;
+  	polygon-fill: #F7E39B;
+  	polygon-opacity: .3;
   }
 }
 
 #parcels {
-  polygon-fill: #eee;
-  line-width: 1;
-  line-color: #fff;
   [is_in_path = true] {
-  	polygon-fill: #A23520;
-  	polygon-opacity: .5;
+    line-width: 1;
+    line-color: #fff;
+    line-opacity: .2;
+  	polygon-fill: #FBF1CD;
+  	polygon-opacity: .1;
   }
 }
 
