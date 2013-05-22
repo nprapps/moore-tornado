@@ -12,9 +12,15 @@ $(document).ready(function(){
         maxZoom:19
     });
     L.control.scale().addTo(map);
+        
+    var base_layer = L.mapbox.tileLayer('npr.map-g7ewv5af');
+    var info_layer = L.mapbox.tileLayer('npr.ok-moore-tornado-satellite');
+    var zoom_layer = L.mapbox.tileLayer('npr.ok-moore-tornado-satellite');
+    
+    map.addLayer(base_layer);
+    map.addLayer(info_layer);
     
     if (IS_MOBILE) {
-        map.addLayer(L.mapbox.tileLayer('npr.map-g7ewv5af,npr.ok-moore-tornado-satellite'));
         map.setView([35.338, -97.486], 13);
         $('#about').click(function(){
             if($('.modal-body').children().length < 1 ) {
@@ -23,15 +29,16 @@ $(document).ready(function(){
         });
         
     } else {
-        map.addLayer(L.mapbox.tileLayer('npr.map-g7ewv5af,npr.ok-moore-tornado-satellite'));
         map.setView([35.338, -97.486], 14);
         
-        var zoommap = L.mapbox.map('zoommap', 'npr.ok-moore-tornado-satellite', {    
-        //var zoommap = L.mapbox.map('zoommap', 'http://localdev.npr.org:20009/api/Project/ok-moore-tornado/', {
+        var zoommap = L.mapbox.map('zoommap', null, {    
             fadeAnimation: false,
             zoomControl: false,
             attributionControl: false
         });
+        zoommap.addLayer(zoom_layer);
+        //PROBABLY NEED TO ADD A GRID LAYER, MAYBE THE INFO LAYER GRID
+        //zoommap.addLayer(zoom_grid);
     
         var $zl = $('#zoomlens');
         var $tooltip = $('#tooltip');
@@ -41,6 +48,8 @@ $(document).ready(function(){
             $zl.css('top', ~~e.containerPoint.y - zl_radius + 'px');
             $zl.css('left', ~~e.containerPoint.x - zl_radius + 'px');
             zoommap.setView(e.latlng, map.getZoom(), true);
+            
+            //THIS DOESNT WORK NOW, need to fix since we rejiggered the layers (it's ticketed)
             zoommap.gridLayer.getData(e.latlng,function(data){
                 if(data){
                 
@@ -66,5 +75,13 @@ $(document).ready(function(){
         map.gridLayer.on('mousemove', function(e){
            console.log(e.data); 
         });
-    }    
+    }
+    
+    $('.hide-overlay').click(function(){
+        if (map.hasLayer(info_layer)) {
+            map.removeLayer(info_layer);
+        } else {
+            map.addLayer(info_layer);
+        }
+    });
 });
