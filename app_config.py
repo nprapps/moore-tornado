@@ -18,7 +18,7 @@ PROJECT_NAME = 'Oklahoma Tornado Damage'
 
 # Project name used for paths on the filesystem and in urls
 # Use dashes, not underscores
-PROJECT_SLUG = 'moore-tornado'
+PROJECT_SLUG = 'moore-oklahoma-tornado-damage'
 
 # The name of the repository containing the source
 REPOSITORY_NAME = 'moore-tornado'
