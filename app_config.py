@@ -62,7 +62,8 @@ SHARE_URL = 'http://%s/%s/' % (PRODUCTION_S3_BUCKETS[0], PROJECT_SLUG)
 
 TWITTER = {
     'TEXT': PROJECT_DESCRIPTION,
-    'URL': SHARE_URL
+    'URL': SHARE_URL,
+    'IMAGE_URL': 'http://apps.npr.org/moore-oklahoma-tornado-damage/img/moore-ok-twitter.png'
 }
 
 FACEBOOK = {
