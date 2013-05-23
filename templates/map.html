@@ -29,14 +29,11 @@
     <div id="legend">
         <div class="legend-contents">
     		<p class="headline">{{ PROJECT_NAME }}</a>
-    			<p class="chatter">This map shows the path of the May 20th tornado that hit Moore, Oklahoma.</p>
-    		<p class="read-more">Read more: <a href="TKTK">TKTK: Story Link Here</a></p>
-    		<p class="byline">
-            By <a href="mailto:bboyer@npr.org">Brian Boyer</a>, <a href="mailto:cgroskopf@npr.org">Christopher Groskopf</a>, <a href="mailto:ahurt@npr.org">Alyson Hurt</a>, and <a href="mailto:mstiles@npr.org">Matt Stiles</a> &mdash; May 21, 2012
-            </p>
-    		<p class="source">
-                TKTK: Sources
-            </p>
+    			<p class="chatter">{{ COPY.content.legend_chatter }}</p>
+    		<!-- <p class="read-more">Read more: <a href="TKTK">TKTK: Story Link Here</a></p> -->
+    		<p class="byline">By {{ COPY.content.byline }} &mdash; {{ COPY.content.date }}</p>
+    		<p class="source">Sources: {{ COPY.content.sources }}</p>
+    		<p class="source">Sources: {{ COPY.content.attribution }}</p>
             <button class="hide-overlay"><span class="on">Hide labels</span><span class="off">Show labels</span></button>
 		</div>
 	</div>
