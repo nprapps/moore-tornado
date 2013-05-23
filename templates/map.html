@@ -6,7 +6,6 @@
 {% endblock %}
 
 {% block extra_head_js %}
-    {{ JS.push('js/lib/mapbox.js') }}
 {% endblock extra_head_js %}
 
 {% block map_content %}
@@ -59,4 +58,5 @@
 <!--[if lte IE 8]>
     <link href='css/mapbox.ie.css' rel='stylesheet' />
 <![endif]-->
+<script type="text/javascript" src="js/lib/mapbox.js"> </script>
 {% endblock extra_foot %}
