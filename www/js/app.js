@@ -14,7 +14,8 @@ $(document).ready(function(){
     });
     L.control.scale().addTo(map);
         
-    var base_layer = L.mapbox.tileLayer('npr.map-g7ewv5af');
+    //var base_layer = L.mapbox.tileLayer('npr.map-g7ewv5af');
+    var base_layer = L.tileLayer('http://mw1.gstatic.com/crisisresponse/2013/2013-oklahoma-tornado/digitalglobe/OK_PO_1194054_GE1_2013_05_23_maptiles/{x}_{y}_{z}.png')
     var info_layer = L.mapbox.tileLayer('npr.ok-moore-tornado-satellite');
     var info_grid = L.mapbox.gridLayer('npr.ok-moore-tornado-satellite');
     var zoom_layer = L.mapbox.tileLayer('npr.ok-moore-tornado-zoomlens');
