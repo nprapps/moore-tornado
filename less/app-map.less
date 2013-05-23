@@ -15,10 +15,11 @@ a:hover, a:active { color: #36c; }
     .leaflet-left {
         left: auto;
         right: 0;
-        
+
         .leaflet-control {
             margin-left: 0;
             margin-right: 11px;
+            z-index: 2001;
         }
     }
     .leaflet-top { top: 55px; }
@@ -40,7 +41,7 @@ a:hover, a:active { color: #36c; }
     top: -9999px;
     left: -9999px;
     z-index: 1000;
-    
+
     #zoommap {
         width: 300px;
         height: 300px;
@@ -55,7 +56,7 @@ a:hover, a:active { color: #36c; }
         font-weight:bold;
         background-color: rgba(0,0,0,0.3);
         padding: 3px 11px;
-    
+
         p {
             font-size: 12px;
             line-height: 1.3em;
@@ -89,7 +90,7 @@ nav {
     z-index:2;
     width:100%;
 }
-        
+
 #topper {
     display:none;
     position:fixed;
@@ -100,7 +101,7 @@ nav {
     height:44px;
     color:#333;
     padding-left:30px;
-    
+
     h1 {
         font-size: 14px;
         font-family: Helvetica, Arial, sans-serif;
@@ -108,7 +109,7 @@ nav {
         line-height: 44px;
         color:#111;
     }
-    
+
     #about {
         text-transform: uppercase;
         position: absolute;
@@ -122,7 +123,7 @@ nav {
         color: #111;
         background-color: #e0e0e0;
     }
-    
+
     .hide-overlay {
         text-transform: uppercase;
         position: absolute;
@@ -150,14 +151,14 @@ nav {
     color:#333;
     padding-left:20px;
     overflow:hidden;
-    
+
     .info-box p {
         font-size:9px;
         line-height:22px;
         margin:0;
         float:left;
     }
-    
+
     .info-box p.locationad {
         margin-right:20px;
     }
@@ -174,7 +175,7 @@ nav {
 
 #legend {
     position:absolute;
-    z-index:2;
+    z-index:2000;
     left: 30px;
     top: 74px;
     padding: 22px 22px 22px 22px;
@@ -182,49 +183,57 @@ nav {
     background:#fff;
     border: 1px solid #ccc;
 }
-    
-.legend-contents p.headline { 
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 22px;
-    color: #111;
-    margin-bottom: 10px;
+
+.legend-contents {
+    h4.legend-header {
+        color: #444;
+        font-size: 13px;
+        font-weight: bold;
+        margin-bottom: 6px;
+    }
+    p.headline {
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 16px;
+        color: #111;
+    }
+    a { color: #36c; }
 }
 
-.legend-contents a { 
-    color: #36c;
-}
-
-.legend-contents p { 
+.legend-contents p {
     font-size: 14px;
     line-height: 1.3em;
     color: #666;
 }
 
-.legend-contents ul { 
-    display: inline; 
+.legend-contents ul {
+    display: inline;
     list-style-type: none;
     margin: 0;
     line-height:24px;
+
+    &:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 }
 
-.legend-contents li { 
-    display: inline;
+.legend-contents li {
+    display: block;
+    float: left;
     list-style-type: none;
     font-weight: bold;
-    margin:0;
+    margin: 0;
+    padding-right: 12px;
+    color: #444;
+    font-size: 13px;
 }
 
 .legend-contents li span {
     display: block;
-    position: static;
     float: left;
+    position: static;
     width: 15px;
     height: 15px;
     overflow: visible;
-    margin-right: 10px;
-    margin-bottom: 2px;
-    margin-top:3px;
+    margin-right: 6px;
 }
 
 .legend-contents p.source,#legend p.byline {
@@ -232,7 +241,7 @@ nav {
 }
 
 
-.legend-contents li { 
+.legend-contents li {
     display: inline;
     list-style-type: none;
     font-weight: bold;
@@ -270,7 +279,7 @@ nav {
 
 .modal-body {
     max-height:none;
-    
+
     .legend-contents .headline {
         display:none;
     }
@@ -323,7 +332,7 @@ nav {
 }
 
 .danger-popup .pointer {
-    background-image:url('../img/down-arrow.png'); 
+    background-image:url('../img/down-arrow.png');
     height:10px;
     width:18px;
     position:absolute;
@@ -352,7 +361,7 @@ nav {
 @media (max-width: 768px) {
     // stupid bootstrap
     nav .site-links { margin-left:20px; }
-    
+
     body { padding: 0; padding-right: 0; }
     #topper { padding-left: 20px; display:block; }
     #legend { display: none; }
@@ -372,15 +381,15 @@ nav {
             font-size: 9px;
             line-height: 11px;
         }
-        
+
     }
-    .modal { 
+    .modal {
 //        .modal-body { -webkit-overflow-scrolling: touch; }
         .hide-overlay { display: none; }
     }
     .legend-contents {
         p, li { font-size: 12px; }
-        p.byline { margin-bottom: 3px; }
+        p.byline { margin-bottom: 6px; }
         p.source { margin-bottom: 0; }
     }
 }
