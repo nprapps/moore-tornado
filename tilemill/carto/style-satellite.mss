@@ -132,6 +132,8 @@ Map {
       line-opacity: .8;
       polygon-opacity: 0;
     }
+    [zoom = 18]  { line-width: 2; }
+    [zoom >= 19] { line-width: 2.5; }
   }
 }
 
