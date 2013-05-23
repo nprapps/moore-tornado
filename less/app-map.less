@@ -184,16 +184,20 @@ nav {
     border: 1px solid #ccc;
 }
 
-.legend-contents p.headline {
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 22px;
-    color: #111;
-    margin-bottom: 10px;
-}
-
-.legend-contents a {
-    color: #36c;
+.legend-contents {
+    h4.legend-header {
+        color: #444;
+        font-size: 13px;
+        font-weight: bold;
+        margin-bottom: 6px;
+    }
+    p.headline {
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 16px;
+        color: #111;
+    }
+    a { color: #36c; }
 }
 
 .legend-contents p {
@@ -207,25 +211,29 @@ nav {
     list-style-type: none;
     margin: 0;
     line-height:24px;
+
+    &:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 }
 
 .legend-contents li {
-    display: inline;
+    display: block;
+    float: left;
     list-style-type: none;
     font-weight: bold;
-    margin:0;
+    margin: 0;
+    padding-right: 12px;
+    color: #444;
+    font-size: 13px;
 }
 
 .legend-contents li span {
     display: block;
-    position: static;
     float: left;
+    position: static;
     width: 15px;
     height: 15px;
     overflow: visible;
-    margin-right: 10px;
-    margin-bottom: 2px;
-    margin-top:3px;
+    margin-right: 6px;
 }
 
 .legend-contents p.source,#legend p.byline {
@@ -381,7 +389,7 @@ nav {
     }
     .legend-contents {
         p, li { font-size: 12px; }
-        p.byline { margin-bottom: 3px; }
+        p.byline { margin-bottom: 6px; }
         p.source { margin-bottom: 0; }
     }
 }
