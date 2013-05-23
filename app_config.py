@@ -56,7 +56,7 @@ COPY_GOOGLE_DOC_KEY = '0AjlIKRG8DtTqdDZKdVZJT0pTTVRaaTJ0RzhZaUo2akE'
 """
 SHARING
 """
-PROJECT_DESCRIPTION = 'An opinionated project template for (mostly) server-less apps.'
+PROJECT_DESCRIPTION = 'Survey the damage from the tornado that struck Moore, Oklahoma.'
 SHARE_URL = 'http://%s/%s/' % (PRODUCTION_S3_BUCKETS[0], PROJECT_SLUG)
 
 
@@ -69,7 +69,7 @@ FACEBOOK = {
     'TITLE': PROJECT_NAME,
     'URL': SHARE_URL,
     'DESCRIPTION': PROJECT_DESCRIPTION,
-    'IMAGE_URL': '',
+    'IMAGE_URL': 'http://apps.npr.org/moore-oklahoma-tornado-damage/img/moore-ok.png',
     'APP_ID': '138837436154588'
 }
 
