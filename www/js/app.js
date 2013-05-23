@@ -44,7 +44,6 @@ $(document).ready(function(){
         var $info_bar = $('#info-bar');
         
         map.on('click', function(e){
-            console.log('click');
             update_info_boxes(e.latlng);
         });
         map.on('zoomend', function(e) {
@@ -81,6 +80,10 @@ $(document).ready(function(){
                 update_info_boxes(e.latlng);
             }
         });
+        zoommap.on('drag', function(e) {
+            map.setView(zoommap.getCenter(), map.getZoom(), true);
+            return false;
+        });
         map.on('zoomend', function(e) {
             if (map.getZoom() >= ZOOM_LENS_THRESHOLD) {
                 $zl.show();
@@ -88,9 +91,6 @@ $(document).ready(function(){
             } else {
                 $zl.hide();
             }
-        });
-        map.gridLayer.on('mousemove', function(e){
-           console.log(e.data); 
         });
     }
     
