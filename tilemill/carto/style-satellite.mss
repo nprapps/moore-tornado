@@ -25,14 +25,14 @@ Map {
 #damage {
   [name = 'EF0'][zoom < 16] {
     line-width: 2;
-    line-color: #D8472B;
-    line-opacity: .8;
+    line-color: #EFC637;
+    line-opacity: .4;
   }
 }
 #damage-zoomlens {
   [name = 'EF0'][zoom >= 16] {
     line-width: 3;
-    line-color: #D8472B;
+    line-color: #EFC637;
     line-opacity: .8;
   }
 }
@@ -74,6 +74,7 @@ Map {
       [zoom < 15]  { 
         text-size: 10px;
       }
+      [zoom >= 16] { text-opacity: 0; }
     }
     [CLASS = 'A31'] {
       [zoom >= 12] { 
@@ -86,6 +87,7 @@ Map {
       [zoom >= 15][zoom < 16] { 
         text-size: 12px;
       }
+      [zoom >= 16] { text-opacity: 0; }
     }
     [CLASS = 'A40'],
     [CLASS = 'A41'],
@@ -95,6 +97,7 @@ Map {
         text-fill: #666;
         text-opacity: 1;
       }
+      [zoom >= 16] { text-opacity: 0; }
     }
     [CLASS = 'A63'] {
       [zoom >= 15][zoom < 16] { 
@@ -102,6 +105,7 @@ Map {
         text-fill: #666;
         text-opacity: 1;
       }
+      [zoom >= 16] { text-opacity: 0; }
     }
   }
 }
@@ -110,9 +114,12 @@ Map {
   [is_in_path = true] {
     [zoom < 16] {
       polygon-fill: #D8472B;
-      line-color: #D8472B;
-      polygon-opacity: .7;
-      line-opacity: 0;
+//      line-color: #D8472B;
+      polygon-opacity: .9;
+//      line-opacity: 0;
+      [intensity = 'EF0'] { polygon-fill: #EFC637; }
+      [intensity = 'EF2'] { polygon-fill: #EF973F; }
+      [intensity = 'EF4'] { polygon-fill: #D8472B; }
     }
   }
 }
@@ -130,24 +137,15 @@ Map {
 
 #parcels {
   [is_in_path = true] {
-    [zoom < 16] {
-      line-width: 1;
-      line-color: #fff;
-      line-opacity: .1;
-      polygon-fill: #FBF1CD;
-      polygon-opacity: .1;
-    }
-    [zoom >= 16] {
-      polygon-opacity: 0;
-    }
+    polygon-opacity: 0;
   }
 }
 
-/*
 #damage-bg {
   [zoom < 16] {
-    polygon-fill: #6C2315;
     polygon-opacity: .2;
+    [name = 'EF0'] { polygon-fill: #B39429; }
+    [name = 'EF2'] { polygon-fill: #AA6A21; }
+    [name = 'EF4'] { polygon-fill: #A23520; }
   }
 }
-*/
