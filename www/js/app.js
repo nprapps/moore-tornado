@@ -2,6 +2,8 @@ var IS_MOBILE = Modernizr.touch; // disable certain features for touch devices
 var WINDOW_WIDTH = $('body').width();
 var ZOOM_LENS_THRESHOLD = 16;
 
+var show_overlay = true;
+
 $(document).ready(function(){
     
     if (WINDOW_WIDTH < 768) {
@@ -81,7 +83,7 @@ $(document).ready(function(){
         var zl_radius = $zl.width() / 2;
     
         map.on('mousemove', function(e){
-            if (map.getZoom() >= ZOOM_LENS_THRESHOLD) {
+            if (map.getZoom() >= ZOOM_LENS_THRESHOLD && show_overlay) {
                 $zl.css('top', ~~e.containerPoint.y - zl_radius + 'px');
                 $zl.css('left', ~~e.containerPoint.x - zl_radius + 'px');
                 zoommap.setView(e.latlng, map.getZoom(), true);
@@ -93,7 +95,7 @@ $(document).ready(function(){
             return false;
         });
         map.on('zoomend', function(e) {
-            if (map.getZoom() >= ZOOM_LENS_THRESHOLD) {
+            if (map.getZoom() >= ZOOM_LENS_THRESHOLD && show_overlay) {
                 $zl.show();
                 if (zoommap._loaded) zoommap.setZoom(map.getZoom());
             } else {
@@ -115,6 +117,8 @@ $(document).ready(function(){
                 $zl.hide();
             }
             $('.hide-overlay').addClass('engaged');
+            
+            show_overlay = false;
         } else {
             map.addLayer(info_layer);
             if (IS_MOBILE) {
@@ -125,6 +129,8 @@ $(document).ready(function(){
                 }
             }
             $('.hide-overlay').removeClass('engaged');
+
+            show_overlay = true;
         }
     });
 });
