@@ -41,21 +41,19 @@ a:hover, a:active { color: #36c; }
     left: -9999px;
     
     #zoommap {
-        width: 400px;
-        height: 400px;
+        width: 300px;
+        height: 300px;
     }
     #border {
-        margin: -5px;
-        border: #fff solid 4px;
-        box-shadow: 0px 0px 10px #888;
+        border: #fff dashed 1px;
     }
     .info-box {
         position:absolute;
-        left:-5px;
-        top:400px;
-        background-color:white;
-        height:100px;
-        width:408px;
+        top:302px;
+        color:white;
+        font-weight:bold;
+        background-color: rgba(0,0,0,0.3);
+        padding: 3px 11px;
     
         p {
             font-size: 12px;
@@ -68,8 +66,8 @@ a:hover, a:active { color: #36c; }
     position: absolute;
     pointer-events: none;
     overflow: hidden;
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
 }
 
 .leaflet-container {
