@@ -411,6 +411,9 @@ def download_pois():
     local('curl --output data/pois.csv "https://docs.google.com/spreadsheet/pub?key=0AjlIKRG8DtTqdGM4VkhDUmNrb2FLQW45d2tmbE5SMlE&single=true&gid=0&output=csv"')
 
 def geoprocess():
+    # FIX FOR SLUG NAME CHANGING
+    env.project_slug = 'moore-tornado'
+
     # Setup
     with settings(warn_only=True):
         local('dropdb %(project_slug)s' % env)
@@ -419,7 +422,7 @@ def geoprocess():
 
     # Load POIs
     download_pois()
-    local('ogr2ogr -f "PostgreSQL" PG:"dbname="%(project_slug)s data/pois.vrt -nln pois -t_srs EPSG:4326')
+    local('ogr2ogr -f "PostgreSQL" PG:"dbname=%(project_slug)s" data/pois.vrt -nln pois -t_srs EPSG:4326')
 
     # Load shapefiles
     local('ogr2ogr -f "PostgreSQL" PG:"dbname=%(project_slug)s" data/buildings/Buildings.shp -nln buildings -t_srs EPSG:4326 -nlt MultiPolygon' % env)
