@@ -310,9 +310,15 @@ nav {
 }
 
 @media (max-width: 767px) {
-    // Override bootstrap
+    // stupid bootstrap
+    nav { margin-left: 0px; }
+}
+
+@media (max-width: 768px) {
+    // stupid bootstrap
+    nav .site-links { margin-left:20px; }
+    
     body { padding: 0; padding-right: 0; }
-    nav { padding-left: 20px; }
     #topper { padding-left: 20px; display:block; }
     #legend { display: none; }
     .leaflet-control-container { display: none; }
