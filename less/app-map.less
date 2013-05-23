@@ -41,21 +41,19 @@ a:hover, a:active { color: #36c; }
     left: -9999px;
     
     #zoommap {
-        width: 400px;
-        height: 400px;
+        width: 300px;
+        height: 300px;
     }
     #border {
-        margin: -5px;
-        border: #fff solid 4px;
-        box-shadow: 0px 0px 10px #888;
+        border: #fff dashed 1px;
     }
     .info-box {
         position:absolute;
-        left:-5px;
-        top:400px;
-        background-color:white;
-        height:100px;
-        width:408px;
+        top:302px;
+        color:white;
+        font-weight:bold;
+        background-color: rgba(0,0,0,0.3);
+        padding: 3px 11px;
     
         p {
             font-size: 12px;
@@ -68,8 +66,8 @@ a:hover, a:active { color: #36c; }
     position: absolute;
     pointer-events: none;
     overflow: hidden;
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
 }
 
 .leaflet-container {
@@ -147,16 +145,16 @@ nav {
     width:100%;
     z-index:2;
     background-color:white;
-    height:44px;
+    height:22px;
     color:#333;
     padding-left:20px;
     overflow:hidden;
     
     .info-box p {
-        font-size:12px;
-        line-height:44px;
+        font-size:9px;
+        line-height:22px;
         margin:0;
-        display:inline;
+        float:left;
     }
     
     .info-box p.locationad {
@@ -310,10 +308,33 @@ nav {
 }
 
 @media (max-width: 767px) {
-    // Override bootstrap
+    // stupid bootstrap
+    nav { margin-left: 0px; }
+}
+
+@media (max-width: 768px) {
+    // stupid bootstrap
+    nav .site-links { margin-left:20px; }
+    
     body { padding: 0; padding-right: 0; }
-    nav { padding-left: 20px; }
     #topper { padding-left: 20px; display:block; }
     #legend { display: none; }
-    .zoomer { display: none; }
+    .leaflet-control-container { display: none; }
+}
+
+@media (max-width: 400px) {
+    #topper {
+        #about {
+            width: 44px;
+            font-size: 9px;
+            line-height: 11px;
+        }
+        .hide-overlay {
+            right: 64px;
+            width: 46px;
+            font-size: 9px;
+            line-height: 11px;
+        }
+        
+    }
 }

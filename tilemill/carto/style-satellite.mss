@@ -1,38 +1,38 @@
 Map {
-  background-color: #666;
+//  background-color: #647356;
 }
 
 #pois {
-//  marker-width: 30px;
-//  marker-type: ellipse;
-//  marker-allow-overlap: true;
-
   ::labels {
     text-name: [location];
     text-face-name: "Helvetica Neue Bold Italic";
-    text-fill: #333;
-    text-halo-fill: #fff;
-    text-halo-radius: 2;
-    text-opacity: .8;
-    text-wrap-width: 30;
-    text-character-spacing: 2;
-    [zoom < 16]  { text-size: 11px; }
-    [zoom < 14]  { text-size: 9px; }
-    [zoom >= 16] { text-opacity: 0; }
+    text-fill: #fff;
+    text-opacity: .9; 
+    text-wrap-width: 40;
+    text-character-spacing: 1;
+    text-allow-overlap: true;
+    [location = 'Briarwood Elementary School'] { text-dy: -5; }
+    [location = 'Moore Medical Center'] { text-dy: -10; }
+    [location = 'Riverlife Church of God'] { text-dy: 5; }
+    
+    [zoom < 16]  { 
+      text-size: 10px; 
+    }
+    [zoom < 14],[zoom >= 16] { text-opacity: 0; }
   }
 }
 
 #damage {
-  [zoom < 16] {
+  [name = 'EF0'][zoom < 16] {
     line-width: 2;
-    line-color: #D8472B;
-    line-opacity: .8;
+    line-color: #EFC637;
+    line-opacity: .4;
   }
 }
 #damage-zoomlens {
-  [zoom >= 16] {
+  [name = 'EF0'][zoom >= 16] {
     line-width: 3;
-    line-color: #D8472B;
+    line-color: #EFC637;
     line-opacity: .8;
   }
 }
@@ -60,6 +60,7 @@ Map {
     text-halo-fill: #fff;
     text-halo-radius: 2;
     text-avoid-edges: true;
+    text-allow-overlap: false;
     text-size: 13px;
     text-character-spacing: 2;
     text-opacity: 0;
@@ -73,6 +74,7 @@ Map {
       [zoom < 15]  { 
         text-size: 10px;
       }
+      [zoom >= 16] { text-opacity: 0; }
     }
     [CLASS = 'A31'] {
       [zoom >= 12] { 
@@ -85,6 +87,7 @@ Map {
       [zoom >= 15][zoom < 16] { 
         text-size: 12px;
       }
+      [zoom >= 16] { text-opacity: 0; }
     }
     [CLASS = 'A40'],
     [CLASS = 'A41'],
@@ -94,6 +97,7 @@ Map {
         text-fill: #666;
         text-opacity: 1;
       }
+      [zoom >= 16] { text-opacity: 0; }
     }
     [CLASS = 'A63'] {
       [zoom >= 15][zoom < 16] { 
@@ -101,6 +105,7 @@ Map {
         text-fill: #666;
         text-opacity: 1;
       }
+      [zoom >= 16] { text-opacity: 0; }
     }
   }
 }
@@ -109,9 +114,12 @@ Map {
   [is_in_path = true] {
     [zoom < 16] {
       polygon-fill: #D8472B;
-      line-color: #D8472B;
-      polygon-opacity: .7;
-      line-opacity: 0;
+//      line-color: #D8472B;
+      polygon-opacity: .9;
+//      line-opacity: 0;
+      [intensity = 'EF0'] { polygon-fill: #EFC637; }
+      [intensity = 'EF2'] { polygon-fill: #EF973F; }
+      [intensity = 'EF4'] { polygon-fill: #D8472B; }
     }
   }
 }
@@ -129,24 +137,15 @@ Map {
 
 #parcels {
   [is_in_path = true] {
-    [zoom < 16] {
-      line-width: 1;
-      line-color: #fff;
-      line-opacity: .1;
-      polygon-fill: #FBF1CD;
-      polygon-opacity: .1;
-    }
-    [zoom >= 16] {
-      polygon-opacity: 0;
-    }
+    polygon-opacity: 0;
   }
 }
 
-/*
 #damage-bg {
   [zoom < 16] {
-    polygon-fill: #6C2315;
     polygon-opacity: .2;
+    [name = 'EF0'] { polygon-fill: #B39429; }
+    [name = 'EF2'] { polygon-fill: #AA6A21; }
+    [name = 'EF4'] { polygon-fill: #A23520; }
   }
 }
-*/
