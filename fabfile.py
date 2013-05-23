@@ -419,7 +419,7 @@ def geoprocess():
 
     # Load POIs
     download_pois()
-    local('ogr2ogr -f "PostgreSQL" PG:"dbname=moore-tornado" data/pois.vrt -nln pois -t_srs EPSG:4326')
+    local('ogr2ogr -f "PostgreSQL" PG:"dbname="%(project_slug)s data/pois.vrt -nln pois -t_srs EPSG:4326')
 
     # Load shapefiles
     local('ogr2ogr -f "PostgreSQL" PG:"dbname=%(project_slug)s" data/buildings/Buildings.shp -nln buildings -t_srs EPSG:4326 -nlt MultiPolygon' % env)
