@@ -39,6 +39,7 @@ a:hover, a:active { color: #36c; }
     overflow: visible;
     top: -9999px;
     left: -9999px;
+    z-index: 1000;
     
     #zoommap {
         width: 300px;
@@ -376,5 +377,14 @@ nav {
             line-height: 11px;
         }
         
+    }
+    .modal { 
+//        .modal-body { -webkit-overflow-scrolling: touch; }
+        .hide-overlay { display: none; }
+    }
+    .legend-contents {
+        p, li { font-size: 12px; }
+        p.byline { margin-bottom: 3px; }
+        p.source { margin-bottom: 0; }
     }
 }
