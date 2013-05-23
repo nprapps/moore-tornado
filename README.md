@@ -18,6 +18,7 @@ moore-tornado
 * [Install cron jobs](#install-cron-jobs)
 * [Install web services](#install-web-services)
 * [TileMill project settings](#tilemill-project-settings)
+* [Previewing local TileMill layers](#previewing-local-tilemill-layers)
 
 What is this?
 -------------
@@ -316,3 +317,15 @@ damage-bg (polygons - carto styles the background only)
 * Table: storm_survey_damage
 * Geometry field: wkb_geometry
 * SRS: WGS84
+
+
+Previewing Local TileMill Layers
+--------------------------------
+
+# Close Chrome
+# In Terminal, run ```open -a Google\ Chrome --args --disable-web-security```
+# In <a href="https://github.com/nprapps/moore-tornado/blob/master/www/js/app.js#L26">app.js</a>, edit the path to your MBTiles file to be:
+
+```zoom_layer = L.mapbox.tileLayer("http://localhost:20009/api/Project/moore-tornado/")```
+
+Where *moore-tornado* the name of your mapbox project.
