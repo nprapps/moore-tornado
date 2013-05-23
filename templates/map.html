@@ -30,7 +30,10 @@
     		<p class="headline">{{ PROJECT_NAME }}</a>
 
     			<p class="chatter">{{ COPY.content.legend_chatter }}</p>
-                <p class="chatter call">{{ COPY.content.call_to_action }}</p>
+                <p class="chatter call">
+                    <img src="img/thumb-okla-zoom.png" alt="" />
+                    {{ COPY.content.call_to_action }}
+                </p>
                 <h4 class="legend-header">Tornado Intensity</h4>
     			<ul>
                     <li><span style="background:#B39429; border: #B39429 1px solid; color:#B39429;"></span> Low</li>
@@ -40,7 +43,6 @@
                 </p>
     		<p class="byline">By {{ COPY.content.byline }} &mdash; {{ COPY.content.date }}</p>
     		<p class="source">Sources: {{ COPY.content.sources }}</p>
-    		<p class="source"><a href="{{ COPY.content.readmore_link }}">More coverage</a> &nbsp; | &nbsp; <a href="{{ COPY.content.comment_link }}">Leave a comment</a></p>
 
             <button class="hide-overlay btn btn-blue"><span class="on">Hide labels</span><span class="off">Show labels</span></button>
 		</div>

@@ -34,6 +34,9 @@ $(document).ready(function(){
         info_grid.getData(latlng,function(data){
             if(data){
                 var html = '';
+                if(data.location) {
+                    html += '<p class="poi">' + data.location + '</p>';                    
+                }
                 if(data.locationad) {
                     html += '<p class="locationad">' + data.locationad + '</p>';                    
                 }
@@ -96,6 +99,10 @@ $(document).ready(function(){
             } else {
                 $zl.hide();
             }
+        });
+
+        $('.chatter.call').click(function() {
+            map.setView([35.3256, -97.5059], 18);
         });
     }
     

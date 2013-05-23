@@ -46,9 +46,7 @@ a:hover, a:active { color: #36c; }
         width: 300px;
         height: 300px;
     }
-    #border {
-        border: #fff dashed 1px;
-    }
+    #border { border: #fff dashed 1px; }
     .info-box {
         position:absolute;
         top:302px;
@@ -61,6 +59,8 @@ a:hover, a:active { color: #36c; }
             font-size: 12px;
             line-height: 1.3em;
             margin: 0;
+            
+            &.poi { text-transform: uppercase; }
         }
     }
 }
@@ -191,76 +191,84 @@ nav {
         font-weight: bold;
         margin-bottom: 6px;
     }
-    p.headline {
-        font-size: 18px;
-        font-weight: bold;
-        line-height: 22px;
-        color: #111;
+    p {
+        font-size: 14px;
+        line-height: 1.3em;
+        color: #666;
+
+        &.chatter.call {
+            background: #f1f1f1;
+            border: 1px solid #ddd;
+            padding: 6px;
+            font-style: italic;
+            padding-top: 19px;
+            font-size: 13px;
+            line-height: 1.4;
+            color: #36c;
+
+            img {
+                float: left;
+                margin: -13px 11px 0 0;
+                width: 60px;
+                height: auto;
+            }
+            &:hover { 
+                opacity: .7;
+                cursor: pointer;
+            }
+            &:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+        }
+        &.headline {
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 22px;
+            margin-bottom: 11px;
+            color: #111;
+        }
+        &.read-more {
+            font-size: 13px;
+            font-weight: bold;
+            margin: 18px 0;
+            color: #111;
+            text-transform: uppercase;
+
+            a {
+                font-weight: normal;
+                text-transform: none;
+            }
+        }
+        &.source, &.byline { 
+            font-size: 12px;
+        }
+    }
+    ul {
+        display: inline;
+        list-style-type: none;
+        margin: 0;
+        line-height:24px;
+
+        &:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+    }
+    li {
+        display: block;
+        float: left;
+        list-style-type: none;
+        margin: 0;
+        padding-right: 12px;
+        color: #444;
+        font-size: 13px;
+
+        span {
+            display: block;
+            float: left;
+            position: static;
+            width: 15px;
+            height: 15px;
+            overflow: visible;
+            margin-right: 6px;
+        }
     }
     a { color: #36c; }
-}
-
-.legend-contents p {
-    font-size: 14px;
-    line-height: 1.3em;
-    color: #666;
-}
-
-.legend-contents ul {
-    display: inline;
-    list-style-type: none;
-    margin: 0;
-    line-height:24px;
-
-    &:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
-}
-
-.legend-contents li {
-    display: block;
-    float: left;
-    list-style-type: none;
-    font-weight: bold;
-    margin: 0;
-    padding-right: 12px;
-    color: #444;
-    font-size: 13px;
-}
-
-.legend-contents li span {
-    display: block;
-    float: left;
-    position: static;
-    width: 15px;
-    height: 15px;
-    overflow: visible;
-    margin-right: 6px;
-}
-
-.legend-contents p.source,#legend p.byline {
-    font-size:12px;
-}
-
-
-.legend-contents li {
-    display: inline;
-    list-style-type: none;
-    font-weight: bold;
-    margin:0;
-}
-.legend-contents p.source,#legend p.byline {
-    font-size:12px;
-}
-.legend-contents p.read-more {
-    font-size: 13px;
-    font-weight: bold;
-    margin: 18px 0;
-    color: #111;
-    text-transform: uppercase;
-}
-
-.legend-contents p.read-more a{
-    font-weight: normal;
-    text-transform: none;
 }
 
 .modal {
@@ -287,21 +295,20 @@ nav {
 
 .modal-header {
     border-bottom:2px solid #ebebeb;
-}
-
-.modal-header h3 {
-    color: #111;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.modal-header .close {
-    padding: 20px;
-    position: absolute;
-    right: -5px;
-    top: -8px;
-    color: #111;
-    opacity:1;
+    
+    h3 {
+        color: #111;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .close {
+        padding: 20px;
+        position: absolute;
+        right: -5px;
+        top: -8px;
+        color: #111;
+        opacity:1;
+    }
 }
 
 .map-tooltip {
@@ -368,6 +375,7 @@ nav {
     .leaflet-control-container { display: none; }
 
     .modal .hide-overlay { display: none; }
+    .legend-contents p.chatter.call { display: none; }
 }
 
 @media (max-width: 400px) {
