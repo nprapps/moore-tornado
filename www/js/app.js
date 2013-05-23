@@ -32,14 +32,6 @@ $(document).ready(function(){
                 if(data.locationad) {
                     html += '<p class="locationad">' + data.locationad + '</p>';                    
                 }
-                html += '<p class="owner">';
-                if(data.ownername1) {
-                    html += ' ' + data.ownername1;
-                }
-                if(data.ownername2) {
-                    html += ' ' + data.ownername2;
-                }
-                html += '</p>'
                 $info_boxes.html(html);
             }
         });
