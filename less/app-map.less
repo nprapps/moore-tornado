@@ -147,16 +147,16 @@ nav {
     width:100%;
     z-index:2;
     background-color:white;
-    height:44px;
+    height:22px;
     color:#333;
     padding-left:20px;
     overflow:hidden;
     
     .info-box p {
-        font-size:12px;
-        line-height:44px;
+        font-size:9px;
+        line-height:22px;
         margin:0;
-        display:inline;
+        float:left;
     }
     
     .info-box p.locationad {
@@ -310,10 +310,33 @@ nav {
 }
 
 @media (max-width: 767px) {
-    // Override bootstrap
+    // stupid bootstrap
+    nav { margin-left: 0px; }
+}
+
+@media (max-width: 768px) {
+    // stupid bootstrap
+    nav .site-links { margin-left:20px; }
+    
     body { padding: 0; padding-right: 0; }
-    nav { padding-left: 20px; }
     #topper { padding-left: 20px; display:block; }
     #legend { display: none; }
-    .zoomer { display: none; }
+    .leaflet-control-container { display: none; }
+}
+
+@media (max-width: 400px) {
+    #topper {
+        #about {
+            width: 44px;
+            font-size: 9px;
+            line-height: 11px;
+        }
+        .hide-overlay {
+            right: 64px;
+            width: 46px;
+            font-size: 9px;
+            line-height: 11px;
+        }
+        
+    }
 }

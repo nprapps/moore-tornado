@@ -1,36 +1,36 @@
 Map {
-  background-color: #666;
+//  background-color: #647356;
 }
 
 #pois {
-//  marker-width: 30px;
-//  marker-type: ellipse;
-//  marker-allow-overlap: true;
-
   ::labels {
     text-name: [location];
     text-face-name: "Helvetica Neue Bold Italic";
-    text-fill: #333;
-    text-halo-fill: #fff;
-    text-halo-radius: 2;
-    text-opacity: .8;
-    text-wrap-width: 30;
-    text-character-spacing: 2;
-    [zoom < 16]  { text-size: 11px; }
-    [zoom < 14]  { text-size: 9px; }
-    [zoom >= 16] { text-opacity: 0; }
+    text-fill: #fff;
+    text-opacity: .9; 
+    text-wrap-width: 40;
+    text-character-spacing: 1;
+    text-allow-overlap: true;
+    [location = 'Briarwood Elementary School'] { text-dy: -5; }
+    [location = 'Moore Medical Center'] { text-dy: -10; }
+    [location = 'Riverlife Church of God'] { text-dy: 5; }
+    
+    [zoom < 16]  { 
+      text-size: 10px; 
+    }
+    [zoom < 14],[zoom >= 16] { text-opacity: 0; }
   }
 }
 
 #damage {
-  [zoom < 16] {
+  [name = 'EF0'][zoom < 16] {
     line-width: 2;
     line-color: #D8472B;
     line-opacity: .8;
   }
 }
 #damage-zoomlens {
-  [zoom >= 16] {
+  [name = 'EF0'][zoom >= 16] {
     line-width: 3;
     line-color: #D8472B;
     line-opacity: .8;
@@ -60,6 +60,7 @@ Map {
     text-halo-fill: #fff;
     text-halo-radius: 2;
     text-avoid-edges: true;
+    text-allow-overlap: false;
     text-size: 13px;
     text-character-spacing: 2;
     text-opacity: 0;
