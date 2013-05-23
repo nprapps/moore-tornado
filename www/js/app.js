@@ -7,10 +7,15 @@ $(document).ready(function(){
     if (WINDOW_WIDTH < 768) {
         IS_MOBILE = true;
     }
+
+    var southWest = new L.LatLng(35.2473, -97.6177);
+    var northEast = new L.LatLng(35.3828, -97.4254);
+    var bounds = new L.LatLngBounds(southWest, northEast);
     
     var map = L.mapbox.map('map',null,{
-        minZoom:12,
-        maxZoom:19
+        minZoom:14, 
+        maxZoom:19,
+        maxBounds: bounds
     });
     L.control.scale().addTo(map);
         
@@ -39,7 +44,7 @@ $(document).ready(function(){
     
     if (IS_MOBILE) {
         map.addLayer(zoom_layer);
-        map.setView([35.338, -97.486], 13);
+        map.setView([35.338, -97.486], 14);
         
         var $info_bar = $('#info-bar');
         
@@ -60,7 +65,7 @@ $(document).ready(function(){
             }
         });
     } else {
-        map.setView([35.338, -97.486], 14);
+        map.setView([35.325, -97.486], 14);
         
         var zoommap = L.mapbox.map('zoommap', null, {    
             fadeAnimation: false,
