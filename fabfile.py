@@ -433,6 +433,10 @@ def geoprocess():
     # Merge buildings tables
     psql('insert into buildings (wkb_geometry, merge, elev, shape_leng, shape_area) select wkb_geometry, merge, elev, shape_leng, shape_area from okc_buildings')
 
+    # Offset buildings and parcels to account for bad georectification of sat images
+    psql('update buildings set wkb_geometry=ST_translate(wkb_geometry, -0.00005, 0)');
+    psql('update parcels set wkb_geometry=ST_translate(wkb_geometry, -0.00005, 0)');
+
     # Add POI data to parcels
     psql('alter table parcels add column location varchar') 
     psql('alter table parcels add column type varchar') 
