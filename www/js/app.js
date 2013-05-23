@@ -123,4 +123,8 @@ $(document).ready(function(){
             $('.hide-overlay').removeClass('engaged');
         }
     });
+    
+    $('.chatter.call').click(function() {
+        map.setView([35.3256, -97.5059], 18);
+    });
 });
