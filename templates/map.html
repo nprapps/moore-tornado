@@ -31,14 +31,16 @@
 
     			<p class="chatter">{{ COPY.content.legend_chatter }}</p>
                 <p class="chatter call">{{ COPY.content.call_to_action }}</p>
+                <h4 class="legend-header">Damage Areas</h4>
     			<ul>
-                    <li><span style="background:#B39429; border: #B39429 1px solid; color:#B39429;"></span> EF0 damage area<br/></li>
-                    <li><span style="background:#AA6A21; border: #AA6A21 1px solid; color:#AA6A21;"></span> EF2 damage area<br/></li>
-                    <li><span style="background:#A23520; border: #A23520 1px solid; color:#A23520;"></span> EF4 damage area<br/></li>
+                    <li><span style="background:#B39429; border: #B39429 1px solid; color:#B39429;"></span> EF0</li>
+                    <li><span style="background:#AA6A21; border: #AA6A21 1px solid; color:#AA6A21;"></span> EF2</li>
+                    <li><span style="background:#A23520; border: #A23520 1px solid; color:#A23520;"></span> EF4</li>
                 </ul>
                 </p>
     		<p class="byline">By {{ COPY.content.byline }} &mdash; {{ COPY.content.date }}</p>
     		<p class="source">Sources: {{ COPY.content.sources }}</p>
+    		<p class="source"><a href="{{ COPY.content.readmore_link }}">More coverage</a> &nbsp; | &nbsp; <a href="{{ COPY.content.comment_link }}">Leave a comment</a></p>
 
             <button class="hide-overlay"><span class="on">Hide labels</span><span class="off">Show labels</span></button>
 		</div>

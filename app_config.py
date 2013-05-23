@@ -14,7 +14,7 @@ import os
 NAMES
 """
 # Project name used for display
-PROJECT_NAME = 'Oklahoma Tornado Damage'
+PROJECT_NAME = 'Zoom In On Oklahoma Tornado Damage'
 
 # Project name used for paths on the filesystem and in urls
 # Use dashes, not underscores
