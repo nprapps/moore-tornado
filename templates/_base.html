@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+    <!-- GDPR -->
+    <script type="text/javascript" src="//{{ S3_BUCKETS[0] }}/gdpr/gdprCompliance.js"></script>
+
     <title>{{ PROJECT_NAME }}</title>
 
     <meta name="description" content="{{ PROJECT_DESCRIPTION }}">
@@ -73,20 +76,20 @@
 
     <nav>
         <ul class="site-links">
-            <li class="npr"><a href="http://npr.org"><img src="http://media.npr.org/chrome/news/nprlogo_138x46.gif" alt="NPR" /></a></li>
-            <li class="news"><a href="http://www.npr.org/sections/news/">News</a></li>
-            <li class="arts"><a href="http://www.npr.org/sections/arts/">Arts &amp; Life</a></li>
-            <li class="music"><a href="http://www.npr.org/music/">Music</a></li>
-            <li class="listen"><a href="http://www.npr.org/listen/">Listen</a></li>
+            <li class="npr"><a href="https://npr.org"><img src="https://media.npr.org/chrome/news/nprlogo_138x46.gif" alt="NPR" /></a></li>
+            <li class="news"><a href="https://www.npr.org/sections/news/">News</a></li>
+            <li class="arts"><a href="https://www.npr.org/sections/arts/">Arts &amp; Life</a></li>
+            <li class="music"><a href="https://www.npr.org/music/">Music</a></li>
+            <li class="listen"><a href="https://www.npr.org/listen/">Listen</a></li>
         </ul>
         <ul class="social-links">
-            <li class="twitter"><a rel="external" href="http://twitter.com/share?text={{ TWITTER.TEXT|urlencode }}&amp;url={{ TWITTER.URL|urlencode }}" alt="Share on Twitter" target="_blank" onclick="_gaq.push(['_trackEvent', 'Social', 'Click Twitter In Navbar', '{{ PROJECT_NAME }}']);">Share This Page On Twitter</a></li>
+            <li class="twitter"><a rel="external" href="https://twitter.com/share?text={{ TWITTER.TEXT|urlencode }}&amp;url={{ TWITTER.URL|urlencode }}" alt="Share on Twitter" target="_blank" onclick="_gaq.push(['_trackEvent', 'Social', 'Click Twitter In Navbar', '{{ PROJECT_NAME }}']);">Share This Page On Twitter</a></li>
             <li class="facebook"><a rel="external" href="https://www.facebook.com/dialog/feed?app_id={{ FACEBOOK.APP_ID }}&amp;link={{ FACEBOOK.URL|urlencode }}&amp;name={{ FACEBOOK.TITLE|urlencode }}&amp;picture={{ FACEBOOK.IMAGE_URL|urlencode }}&amp;redirect_uri={{ FACEBOOK.URL|urlencode }}" alt="Share on Facebook" target="_blank" onclick="_gaq.push(['_trackEvent', 'Social', 'Click Facebook In Navbar', '{{ PROJECT_NAME }}']);">Like This Page On Facebook</a></li>
         </ul>
         <ul class="site-links-2">
-            <li class="stations"><a href="http://www.npr.org/templates/stations/stations/">Stations</a></li>
-            <li class="donate"><a href="http://www.npr.org/stations/donate/index.php">Donate</a></li>
-            <li class="shop"><a href="http://shop.npr.org">Shop</a></li>
+            <li class="stations"><a href="https://www.npr.org/templates/stations/stations/">Stations</a></li>
+            <li class="donate"><a href="https://www.npr.org/stations/donate/index.php">Donate</a></li>
+            <li class="shop"><a href="https://shop.npr.org">Shop</a></li>
         </ul>
     </nav>
 
@@ -129,22 +132,22 @@
     <footer>
         <div class="primary">
             <ul>
-                <li><a href="http://www.npr.org" data-action="Click Logo"><img src="http://media.npr.org/chrome/news/nprlogo_138x46.gif" alt="NPR Logo"></a></li>
-                <li class="news"><a href="http://www.npr.org/sections/news/">News</a></li>
-                <li class="artslife"><a href="http://www.npr.org/sections/arts/">Arts &amp; Life</a></li>
-                <li class="music"><a href="http://www.npr.org/music/">Music</a></li>
-                <li class="programs"><a href="http://www.npr.org/programs/">Programs</a></li>
-                <li class="listen"><a href="http://www.npr.org/listen/">Listen</a></li>
-                <li class="about"><a href="http://www.npr.org/about/">About</a></li>
+                <li><a href="https://www.npr.org" data-action="Click Logo"><img src="https://media.npr.org/chrome/news/nprlogo_138x46.gif" alt="NPR Logo"></a></li>
+                <li class="news"><a href="https://www.npr.org/sections/news/">News</a></li>
+                <li class="artslife"><a href="https://www.npr.org/sections/arts/">Arts &amp; Life</a></li>
+                <li class="music"><a href="https://www.npr.org/music/">Music</a></li>
+                <li class="programs"><a href="https://www.npr.org/programs/">Programs</a></li>
+                <li class="listen"><a href="https://www.npr.org/listen/">Listen</a></li>
+                <li class="about"><a href="https://www.npr.org/about/">About</a></li>
             </ul>
         </div>
         <div class="secondary">
             <p>&copy;2013 NPR</p>
             <ul>
-                <li id="footerContact"><a href="http://help.npr.org/npr/includes/customer/npr/custforms/contactus.aspx">Contact</a></li>
-                <li><a href="http://www.npr.org/about/termsofuse.html">Terms of Use</a></li>
-                <li><a href="http://www.npr.org/about/privacypolicy.html">Privacy</a></li>
-                <li><a href="http://thin.npr.org/">Text-Only</a></li>
+                <li id="footerContact"><a href="https://help.npr.org/npr/includes/customer/npr/custforms/contactus.aspx">Contact</a></li>
+                <li><a href="https://www.npr.org/about/termsofuse.html">Terms of Use</a></li>
+                <li><a href="https://www.npr.org/about/privacypolicy.html">Privacy</a></li>
+                <li><a href="https://thin.npr.org/">Text-Only</a></li>
             </ul>
         </div>
     </footer>
@@ -205,7 +208,7 @@
                 e.setAttribute("src",
                     (("https:" == document.location.protocol) ?
                      "https://a248.e.akamai.net/chartbeat.download.akamai.com/102508/" :
-                     "http://static.chartbeat.com/") +
+                     "https://static.chartbeat.com/") +
                     "js/chartbeat.js");
                 document.body.appendChild(e);
             }
