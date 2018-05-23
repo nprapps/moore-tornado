@@ -130,7 +130,9 @@ def render():
     """
     from flask import g
 
-    update_copy()
+    # COMMENTING THIS OUT B/C THIS PROJECT NEEDS TO BE UPDATED TO SUPPORT
+    # XLSX FILES. NOW RELYING ON /data/copy.xls FILE STORED W/ REPO
+    # update_copy()
     less()
     jst()
 
@@ -438,17 +440,17 @@ def geoprocess():
     psql('update parcels set wkb_geometry=ST_translate(wkb_geometry, -0.00005, 0)');
 
     # Add POI data to parcels
-    psql('alter table parcels add column location varchar') 
-    psql('alter table parcels add column type varchar') 
+    psql('alter table parcels add column location varchar')
+    psql('alter table parcels add column type varchar')
     psql('update parcels set location=pois.location, type=pois.type from pois where ST_contains(parcels.wkb_geometry, pois.wkb_geometry)')
-    
+
     # Generate parcel intersections
     psql('alter table parcels add column is_in_path bool')
     psql('alter table parcels add column intensity varchar')
 
     for intensity in ['EF0', 'EF1', 'EF2', 'EF3', 'EF4', 'EF5']:
         psql('update parcels set is_in_path=true, intensity=storm_survey_damage.Name from storm_survey_damage where ST_intersects(parcels.wkb_geometry, storm_survey_damage.wkb_geometry) and ST_isValid(parcels.wkb_geometry) and storm_survey_damage.Name=\'%s\'' % intensity)
-    
+
     local('ogr2ogr -f "ESRI Shapefile" data/intersected_parcels/ PG:"dbname=%(project_slug)s" parcels -t_srs EPSG:4326 -overwrite' % env)
 
     # Merge parcel data onto buildings
@@ -465,7 +467,7 @@ def geoprocess():
 
     for intensity in ['EF0', 'EF1', 'EF2', 'EF3', 'EF4', 'EF5']:
         psql('update buildings set is_in_path=true, intensity=storm_survey_damage.Name from storm_survey_damage where ST_intersects(buildings.wkb_geometry, storm_survey_damage.wkb_geometry) and storm_survey_damage.Name=\'%s\'' % intensity);
-    
+
     local('ogr2ogr -f "ESRI Shapefile" data/intersected_buildings/ PG:"dbname=%(project_slug)s" buildings -t_srs EPSG:4326 -overwrite' % env)
 
 """
